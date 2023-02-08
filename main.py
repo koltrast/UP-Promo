@@ -67,3 +67,7 @@ while True:
 		os.system("lpr -P EPSON_TM-T20III ticket.tmp")
 		f.write(f"\n\nexemplaire UP")
 		os.system("lpr -P EPSON_TM-T20III ticket.tmp")
+	os.remove("ticket.tmp")
+	
+	with open("trace.csv", "a", encoding="utf-8") as t:
+		t.write(f"{tranche}; {item}; {price}; {sum(price)}\n")
