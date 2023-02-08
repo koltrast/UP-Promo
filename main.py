@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # modules
-import sys
+import os
 import pandas as pd
 
 # dataframe
@@ -20,20 +20,23 @@ logo = ('''
 ŒUVRIR
 ''')
 
-obj = []
-price = []
 
 while True:
+	obj = []
+	price = []
 	tranche = None
 	item = []
-	while True:
-		value = input("Enter value \n")
-		while not value.isdigit():
-		    item.append(value)
-		    value = input("Enter value \n")
 
-		tranche = int(value)
-		break
+	while True:
+		value = input("Enter value :\n")
+		if value in data.columns:
+			item.append(value)
+		else:
+			try:
+				tranche = int(value)
+				break
+			except ValueError:
+				print("Invalid input. Please enter a valid column name or integer.")
 
 	for i in range(len(item)):
 		price.append(data.at[tranche, item[i]])
@@ -45,7 +48,6 @@ while True:
 			obj.append("casquette")
 
 	with open("ticket.tmp", "w", encoding="utf-8") as f:
-		import os
 		f.write(f"{logo}\n\n")
 		if tranche <= 1:
 			f.write(f"Vous avez déclaré toucher un revenu\ninférieur au 1er décile.\n")
