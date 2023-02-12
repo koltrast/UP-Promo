@@ -162,5 +162,6 @@ cython_debug/
 # Project/General
 *.tmp
 .DS_Store
+*.csv
 
 
