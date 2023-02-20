@@ -62,10 +62,10 @@ while True:
 			f.write(f"le prix a été ajusté.\n\n")
 		for i in range(len(obj)):
 			f.write(f"- {obj[i]} {price[i]}€\n")
-		f.write(f"\n TOTAL : {sum(price)}€")
-		f.write(f"\n\nTickets imprimé en 2 exemplaires")
+		f.write(f"\nTOTAL : {sum(price)}€")
+		f.write(f"\n\nVous venez de contribuer au financement\nd'outils mutualisés destiné à l'association\nComité des Choses Concrètes.\n\nTickets imprimé en 2 exemplaires,\nfaisant fois d'authenticité.")
 		os.system("lpr -P EPSON_TM-T20III ticket.tmp")
-		f.write(f"\n\nexemplaire UP")
+		f.write(f"\n\nexemplaire UP\n\n")
 		os.system("lpr -P EPSON_TM-T20III ticket.tmp")
 	os.remove("ticket.tmp")
 	
