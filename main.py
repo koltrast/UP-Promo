@@ -38,7 +38,7 @@ while True:
 					with open("error.tmp", "w", encoding="utf-8") as e:
 						e.write(f"\n\n Veuillez scanner un article en premier.\n\n")
 					os.system("lpr -P EPSON_TM-T20III error.tmp")
-					#os.remove("error.tmp")
+					os.remove("error.tmp")
 					break
 				break
 			except ValueError:
