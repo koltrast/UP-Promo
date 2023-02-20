@@ -6,9 +6,9 @@ import pandas as pd
 
 # dataframe
 data = pd.DataFrame({
-    "A": [25, 30, 35, 40, 50, 60, 75, 90, 110],
-    "B": [30, 35, 40, 45, 55, 65, 80, 95, 115],
-    "C": [10, 15, 20, 25, 35, 45, 55, 70, 90]})
+    "UP-VST-23": [25, 30, 35, 40, 50, 60, 75, 90, 110],
+    "UP-CMB-23": [30, 35, 40, 45, 55, 65, 80, 95, 115],
+    "UP-CSQ-23": [10, 15, 20, 25, 35, 45, 55, 70, 90]})
 
 # exec
 logo = ('''
@@ -47,11 +47,11 @@ while True:
 	if item:
 		for i in range(len(item)):
 			price.append(data.at[tranche, item[i]])
-			if item[i] == "A":
+			if item[i] == "UP-VST-23":
 				obj.append("veste")
-			elif item[i] == "B":
+			elif item[i] == "UP-CMB-23":
 				obj.append("combinaison")
-			elif item[i] == "C":
+			elif item[i] == "UP-CSQ-23":
 				obj.append("casquette")
 	
 		with open("ticket.tmp", "w", encoding="utf-8") as f:
