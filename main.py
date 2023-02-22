@@ -12,12 +12,13 @@ data = pd.DataFrame({
 
 # exec
 logo = ('''
- __   __  _______ 
-|  | |  ||    _  |
-|  |_|  ||   |_| |
-|       ||    ___|
-|_______||___|2023
-ŒUVRIR
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+██ ██ ██ ▄▄ ████ ██ ██ ▄▄ ████ ██ ██ ▄▄ ██
+██ ██ ██ ▀▀ ████ ██ ██ ▀▀ ████ ██ ██ ▀▀ ██
+██▄▀▀▄██ ███████▄▀▀▄██ ███████▄▀▀▄██ █████
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+Union Pragmatique                     2023
+
 ''')
 
 
@@ -37,7 +38,7 @@ while True:
 				if not item:
 					with open("error.tmp", "w", encoding="utf-8") as e:
 						e.write(f"\n\n Veuillez scanner un article en premier.\n\n")
-					os.system("lpr -P EPSON_TM-T20III error.tmp -o cpi=14 -o lpi=7")
+					os.system("lpr -P EPSON_TM-T20III error.tmp -o cpi=15 -o lpi=7")
 					os.remove("error.tmp")
 					break
 				break
@@ -68,17 +69,17 @@ while True:
 			else:
 				f.write(f"le prix a été ajusté.\n\n")
 			for i in range(len(obj)):
-				f.write(f"- {obj[i]} {price[i]}€\n")
-			f.write(f"\nTOTAL : {sum(price)}€")
-			f.write(f"\n\nVous venez de contribuer au\nfinancement d'outils mutualisés\ndestiné à l'association\nComité des Choses Concrètes.\n\nTickets imprimé en 2 exemplaires,\nfaisant fois d'authenticité.")
+				f.write(f"    {obj[i]} {price[i]}€\n")
+			f.write(f"\n    TOTAL : {sum(price)}€")
+			f.write(f"\n\n\nPar cet achat vous contribuez au\nfinancement d'outils de création mutualisé\ndestinés à l'association d'artistes le\nComité des Choses Concrètes.\n\nTickets imprimé en 2 exemplaires,\nfaisant fois d'authenticité.\n\n.")
 			
-		os.system("lpr -P EPSON_TM-T20III ticket.tmp -o cpi=14 -o lpi=7")
+		os.system("lpr -P EPSON_TM-T20III ticket.tmp -o cpi=15 -o lpi=7")
 		
 		with open("ticket.tmp", "a", encoding="utf-8") as f:
-			f.write(f"\n\nexemplaire Union Pragmatique\n\n\n\n")
+			f.write(f"\n\nexemplaire Union Pragmatique\n\n.")
 			
-		os.system("lpr -P EPSON_TM-T20III ticket.tmp -o cpi=14 -o lpi=7")
-		#os.remove("ticket.tmp")
+		os.system("lpr -P EPSON_TM-T20III ticket.tmp -o cpi=15 -o lpi=7")
+		os.remove("ticket.tmp")
 		
 		with open("trace.csv", "a", encoding="utf-8") as t:
 			t.write(f"{tranche}; {item}; {price}; {sum(price)}\n")
