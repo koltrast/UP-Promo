@@ -37,7 +37,7 @@ while True:
 				tranche = int(value)
 				if not item:
 					with open("error.tmp", "w", encoding="utf-8") as e:
-						e.write(f"\n\n Veuillez scanner un article en premier.\n\n")
+						e.write(f"{logo}\n\nVeuillez scanner un article en premier.\n\n\n\n\n.")
 					os.system("lpr -P EPSON_TM-T20III error.tmp -o cpi=15 -o lpi=7")
 					os.remove("error.tmp")
 					break
@@ -71,12 +71,12 @@ while True:
 			for i in range(len(obj)):
 				f.write(f"    {obj[i]} {price[i]}€\n")
 			f.write(f"\n    TOTAL : {sum(price)}€")
-			f.write(f"\n\n\nPar cet achat vous contribuez au\nfinancement d'outils de création mutualisé\ndestinés à l'association d'artistes le\nComité des Choses Concrètes.\n\nTickets imprimé en 2 exemplaires,\nfaisant fois d'authenticité.\n\n.")
+			f.write(f"\n\n\nPar cet achat vous contribuez au\nfinancement d'outils de création mutualisés\ndestinés à l'association d'artistes le\nComité des Choses Concrètes.\n\nTickets imprimés en 2 exemplaires,\nfaisant fois d'authenticité.\n\n.")
 			
 		os.system("lpr -P EPSON_TM-T20III ticket.tmp -o cpi=15 -o lpi=7")
 		
 		with open("ticket.tmp", "a", encoding="utf-8") as f:
-			f.write(f"\n\nexemplaire Union Pragmatique\n\n.")
+			f.write(f"\n\nExemplaire Union Pragmatique\n\n.")
 			
 		os.system("lpr -P EPSON_TM-T20III ticket.tmp -o cpi=15 -o lpi=7")
 		os.remove("ticket.tmp")
