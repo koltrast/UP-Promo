@@ -61,7 +61,7 @@ while True:
 			f.write(f"{logo}\n\n")
 			if tranche <= 1:
 				f.write(f"Vous avez déclaré toucher un revenu\ninférieur au 1er décile.\n")
-			elif tranche > 1:
+			elif 1 < tranche < 9:
 				f.write(f"Vous avez déclaré toucher un revenu\ncompris entre le {tranche}e et le {tranche+1}e décile.\n")
 			elif tranche == 9:
 				f.write(f"Vous avez déclaré toucher un revenu\nsupérieur au 9e décile.\n")
