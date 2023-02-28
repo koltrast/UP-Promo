@@ -3,6 +3,8 @@
 # modules
 import os
 import pandas as pd
+import time
+from time import sleep
 
 # dataframe
 data = pd.DataFrame({
@@ -77,7 +79,7 @@ while True:
 		
 		with open("ticket.tmp", "a", encoding="utf-8") as f:
 			f.write(f"\n\nExemplaire Union Pragmatique\n\n.")
-			
+		sleep(5)	
 		os.system("lpr -P EPSON_TM-T20III ticket.tmp -o cpi=15 -o lpi=7")
 		os.remove("ticket.tmp")
 		
