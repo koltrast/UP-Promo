@@ -59,9 +59,11 @@ while True:
 				
 		with open("preview.tmp", "w", encoding="utf-8") as p:
 			p.write(f"{logo}\n\n")
-			if tranche <= 1:
+			if tranche == 0:
 				p.write(f"Vous avez déclaré toucher un revenu\ninférieur au 1er décile.\n")
-			elif 1 < tranche < 9:
+			elif tranche == 1:
+				p.write(f"Vous avez déclaré toucher un revenu\ncompris entre le {tranche}er et le {tranche+1}e décile.\n")
+			elif 1 <= tranche < 9:
 				p.write(f"Vous avez déclaré toucher un revenu\ncompris entre le {tranche}e et le {tranche+1}e décile.\n")
 			elif tranche == 9:
 				p.write(f"Vous avez déclaré toucher un revenu\nsupérieur au 9e décile.\n")
@@ -83,8 +85,10 @@ while True:
 		if user_input == "VALIDER":
 			with open("ticket.tmp", "w", encoding="utf-8") as f:
 				f.write(f"{logo}\n\n")
-				if tranche <= 1:
+				if tranche == 0:
 					f.write(f"Vous avez déclaré toucher un revenu\ninférieur au 1er décile.\n")
+				elif tranche == 1:
+					f.write(f"Vous avez déclaré toucher un revenu\ncompris entre le {tranche}er et le {tranche+1}e décile.\n")
 				elif 1 < tranche < 9:
 					f.write(f"Vous avez déclaré toucher un revenu\ncompris entre le {tranche}e et le {tranche+1}e décile.\n")
 				elif tranche == 9:
@@ -104,7 +108,7 @@ while True:
 			
 			with open("ticket.tmp", "a", encoding="utf-8") as f:
 				f.write(f"\n\nExemplaire Union Pragmatique\n\n.")
-			sleep(5)
+			sleep(4)
 			
 			print("printing UP ticket")
 			os.system("lpr -P EPSON_TM-T20III ticket.tmp -o cpi=16 -o lpi=7")
