@@ -76,11 +76,14 @@ while True:
 				p.write(f"    {obj[i]} {price[i]}€\n")
 			p.write(f"\n    TOTAL : {sum(price)}€")
 			p.write(f"\n\n\nPour valider la commande scannez\nle code-barres VALIDER.\nPour annuler la commande scannez\nle code-barres ANNULER\n\n.")
-		
+				
 		print("printing preview ticket")	
 		os.system("lpr -P EPSON_TM-T20III preview.tmp -o cpi=16 -o lpi=7")
 		os.remove("preview.tmp")
 	
+		with open("preview.csv", "a", encoding="utf-8") as t:
+			t.write(f"{tranche}; {item}; {price}; {sum(price)}\n")
+			
 		user_input = input("Validate choice ?\n")			
 		if user_input == "VALIDER":
 			with open("ticket.tmp", "w", encoding="utf-8") as f:
