@@ -1,0 +1,25 @@
+body {
+	background-color: blue;
+	color: yellow;
+	font-family: helvetica, sans-serif;
+	max-width: 80%;
+	margin: auto;
+}
+
+.box {
+	display: flex;
+	border: 2px solid pink;
+	padding: 2%;
+	width: max-content;
+	height: min-content;
+}
+
+/* Union Pragmatique logo settings */
+.logo {
+	font-size: 4vw;
+	font-family: helvetica, sans-serif;
+	line-height: 0.7em;
+	position: relative;
+	letter-spacing: -0.05em;
+	text-indent: 0.57em;
+}
