@@ -10,7 +10,7 @@ body {
 	display: flex;
 	padding: 2%;
 	margin: 2%;
-	/* border: 2px solid greenyellow; */
+	border: 2px solid greenyellow;
 }
 
 .logo-box {
@@ -18,7 +18,7 @@ body {
 	padding: 2%;
 	width: max-content;
 	height: min-content;
-	/* border: 2px solid pink; */
+	border: 2px solid pink;
 }
 
 .info-box {
@@ -28,7 +28,7 @@ body {
 	width: 100%;
 	padding-left: 2%;
 	margin-left: 2%;
-	/* border: solid pink 2px; */
+	border: solid pink 2px;
 }
 
 .int-box {
@@ -36,7 +36,7 @@ body {
 	align-items: center;
 	width: 100%;
 	padding: 2%;
-	/* border: 2px solid pink; */
+	border: 2px solid pink;
 }
 
 /* Union Pragmatique logo settings */
