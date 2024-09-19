@@ -8,19 +8,47 @@
 	</head>
 	<body>
 		<div class="container">
-			<div class="logo-box">
-				<h1 class="logo">
+			<div id="logo-box">
+				<h1 id="logo">
 					Union<br />
 					Pragmatique
 				</h1>
 			</div>
-			<div class="info-box">
+			<div id="info-box">
 				<h2 id="message"></h2>
 			</div>
 		</div>
 		<div class="container">
-			<div class="int-box">
-				<h2>bottom container placeholder</h2>
+			<div id="int-box">
+				<!-- <img id="item-image" src="img/schema1.png" alt="Item Image" /> -->
+				<div id="text-input-section">
+					<input type="text" id="user-input" placeholder="Scannez vos achats" />
+					<button id="validate-text">Valider</button>
+				</div>
+				<div id="entered-list-section">
+					<h3>Liste d’achats :</h3>
+					<ul id="entered-items-list"></ul>
+				</div>
+				<div id="selection-list-section">
+					<h3>Revenus net annuels :</h3>
+					<select id="decile-selection">
+						<option value="option1">/< à 9570 €</option>
+						<option value="option2">entre 9570 € et 14740 €</option>
+						<option value="option3">entre 14740 € et 17850 €</option>
+						<option value="option4">entre 17850 € et 20560 €</option>
+						<option value="option5">entre 20560 € et 23040 €</option>
+						<option value="option6">entre 23040 € et 25720 €</option>
+						<option value="option7">entre 25720 € et 28770 €</option>
+						<option value="option8">entre 28770 € et 32730 €</option>
+						<option value="option9">entre 32730 € et 38930 €</option>
+						<option value="option10">entre 38930 € et 68650 €</option>
+						<option value="option11">/> à 68650 €</option>
+					</select>
+				</div>
+				<div id="action-buttons-section">
+					<button id="validate-context">Valider</button>
+					<button id="cancel-action">Annuler</button>
+				</div>
 			</div>
 		</div>
 		<script src="js/main.js"></script>

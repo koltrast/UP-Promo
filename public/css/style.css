@@ -13,7 +13,7 @@ body {
 	border: 2px solid greenyellow;
 }
 
-.logo-box {
+#logo-box {
 	display: flex;
 	padding: 2%;
 	width: max-content;
@@ -21,7 +21,7 @@ body {
 	border: 2px solid pink;
 }
 
-.info-box {
+#info-box {
 	display: flex;
 	align-items: center;
 	text-align: left;
@@ -31,20 +31,42 @@ body {
 	border: solid pink 2px;
 }
 
-.int-box {
+#int-box {
 	display: flex;
-	align-items: center;
+	flex-direction: column;
+	align-items: flex-start;
 	width: 100%;
 	padding: 2%;
 	border: 2px solid pink;
+	gap: 20px;
 }
 
 /* Union Pragmatique logo settings */
-.logo {
+#logo {
 	font-size: 4vw;
 	font-family: helvetica, sans-serif;
 	line-height: 0.7em;
 	position: relative;
 	letter-spacing: -0.05em;
 	text-indent: 0.57em;
+}
+
+#item-image {
+	width: 100%;
+	height: auto;
+}
+
+#text-input-section {
+	display: flex;
+	gap: 10px;
+}
+
+#entered-items-list,
+#item-selection {
+	margin-top: 10px;
+}
+
+#action-buttons-section {
+	display: flex;
+	gap: 10px;
 }

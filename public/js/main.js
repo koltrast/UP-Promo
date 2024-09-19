@@ -22,3 +22,24 @@ function displayMessage(index) {
 // setTimeout(() => displayMessage(1), 5000); // Après 5 secondes
 // setTimeout(() => displayMessage(2), 10000); // Après 10 secondes
 // setTimeout(() => displayMessage(3), 15000); // Après 15 secondes
+
+// Interaction-box
+
+document.getElementById("validate-text").addEventListener("click", () => {
+	const userInput = document.getElementById("user-input").value;
+	if (userInput.trim() !== "") {
+		const listItem = document.createElement("li");
+		listItem.textContent = userInput;
+		document.getElementById("entered-items-list").appendChild(listItem);
+		document.getElementById("user-input").value = "";
+	}
+});
+
+document.getElementById("validate-context").addEventListener("click", () => {
+	const selectedItem = document.getElementById("decile-selection").value;
+	alert(`Validé: ${selectedItem}`);
+});
+
+document.getElementById("cancel-action").addEventListener("click", () => {
+	alert("Annulé");
+});
