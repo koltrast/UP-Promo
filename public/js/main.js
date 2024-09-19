@@ -25,8 +25,16 @@ function displayMessage(index) {
 
 // Interaction-box
 
-document.addEventListener("DOMContentLoaded", () => {
-	document.getElementById("user-input").focus();
+// focus in the user-input field, remember to uncomment section.
+// document.addEventListener("DOMContentLoaded", () => {
+// 	document.getElementById("user-input").focus();
+// });
+
+// press Enter act as a click on Valider.
+document.getElementById("user-input").addEventListener("keydown", (event) => {
+	if (event.key === "Enter") {
+		document.getElementById("validate-text").click(); // Simule un clic sur le bouton "Valider"
+	}
 });
 
 document.getElementById("validate-text").addEventListener("click", () => {
