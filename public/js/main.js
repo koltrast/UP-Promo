@@ -1,4 +1,4 @@
-// Info-box
+// Info-box messages
 const messages = [
 	"Scannez vos articles", // Step 1
 	"Indiquez votre tranche de revenus", // Step 2
@@ -7,6 +7,8 @@ const messages = [
 ];
 
 const messageContainer = document.getElementById("message");
+let currentStep = 0;
+let itemsScanned = false; // Track if items have been scanned
 
 // Function to display the message based on index
 function displayMessage(index) {
@@ -14,11 +16,6 @@ function displayMessage(index) {
 		messageContainer.textContent = messages[index];
 	}
 }
-
-// Interaction-box
-
-let currentStep = 0;
-let itemsScanned = false; // Track if items have been scanned
 
 // Focus on user input when the page loads
 document.addEventListener("DOMContentLoaded", () => {
