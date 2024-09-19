@@ -25,6 +25,10 @@ function displayMessage(index) {
 
 // Interaction-box
 
+document.addEventListener("DOMContentLoaded", () => {
+	document.getElementById("user-input").focus();
+});
+
 document.getElementById("validate-text").addEventListener("click", () => {
 	const userInput = document.getElementById("user-input").value;
 	if (userInput.trim() !== "") {
