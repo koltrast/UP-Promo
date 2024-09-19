@@ -26,12 +26,12 @@ document.addEventListener("DOMContentLoaded", () => {
 // Press Enter to validate text input and add scanned item
 document.getElementById("user-input").addEventListener("keydown", (event) => {
 	if (event.key === "Enter") {
-		document.getElementById("validate-text").click(); // Simulate click on "Validate"
+		document.getElementById("validate-item").click(); // Simulate click on "Validate"
 	}
 });
 
 // Click "Validate" in the text input section (for scanning items)
-document.getElementById("validate-text").addEventListener("click", () => {
+document.getElementById("validate-item").addEventListener("click", () => {
 	const userInput = document.getElementById("user-input").value;
 	if (userInput.trim() !== "") {
 		const listItem = document.createElement("li");
@@ -42,8 +42,8 @@ document.getElementById("validate-text").addEventListener("click", () => {
 	}
 });
 
-// Click "Validate" in the decile selection section (only after items are scanned)
-document.getElementById("validate-context").addEventListener("click", () => {
+// Click "Validate" in the scanned items section (only after items are scanned)
+document.getElementById("validate-list").addEventListener("click", () => {
 	if (itemsScanned) {
 		// Move to the next step: decile selection
 		currentStep = 1;
@@ -53,9 +53,9 @@ document.getElementById("validate-context").addEventListener("click", () => {
 });
 
 // Click "Validate" in the decile selection section
-document.getElementById("validate-context").addEventListener("click", () => {
+document.getElementById("validate-decile").addEventListener("click", () => {
 	const selectedItem = document.getElementById("decile-selection").value;
-	alert(`Validé: ${selectedItem}`);
+	// alert(`Validé: ${selectedItem}`);
 
 	// Move to the next step
 	currentStep = 2;
@@ -71,7 +71,7 @@ function resetShoppingList() {
 
 // Click "Cancel" or "Validate" at the end
 document.getElementById("cancel-action").addEventListener("click", () => {
-	alert("Annulé");
+	// alert("Annulé");
 
 	// Reset to the first step and clear the shopping list
 	resetShoppingList();
@@ -79,8 +79,8 @@ document.getElementById("cancel-action").addEventListener("click", () => {
 	displayMessage(currentStep); // Display "Scannez vos articles"
 });
 
-document.getElementById("validate-context").addEventListener("click", () => {
-	alert("Commande validée");
+document.getElementById("validate-shopping").addEventListener("click", () => {
+	// alert("Commande validée");
 
 	// Move to the final step
 	currentStep = 3;
