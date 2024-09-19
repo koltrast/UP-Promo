@@ -56,7 +56,7 @@ body {
 	height: auto;
 }
 
-#text-input-section {
+#item-input-section {
 	display: flex;
 	gap: 10px;
 }
@@ -66,7 +66,7 @@ body {
 	margin-top: 10px;
 }
 
-#action-buttons-section {
+.action-buttons-section {
 	display: flex;
 	gap: 10px;
 }
