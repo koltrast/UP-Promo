@@ -31,6 +31,13 @@ document.getElementById("validate-item").addEventListener("click", () => {
 	}
 });
 
+// La touche "enter" valide l’ajout d’article
+document.getElementById("user-input").addEventListener("keydown", (event) => {
+	if (event.key === "Enter") {
+		document.getElementById("validate-item").click();
+	}
+});
+
 // Gérer la validation de la liste
 document.getElementById("validate-list").addEventListener("click", () => {
 	if (enteredItems.length > 0) {
