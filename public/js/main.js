@@ -22,6 +22,9 @@ function displayMessage(index) {
 function resetShoppingList() {
 	const enteredItemsList = document.getElementById("entered-items-list");
 	enteredItemsList.innerHTML = ""; // Clear the list
+	const shoppingValidationDiv = document.getElementById("shopping-validation");
+	shoppingValidationDiv.innerHTML = "";
+
 	itemsScanned = false; // Reset items scanned tracker
 }
 
@@ -66,6 +69,16 @@ document.getElementById("validate-decile").addEventListener("click", () => {
 	if (validateList) {
 		const selectedItem = document.getElementById("decile-selection").value;
 		// alert(`Validé: ${selectedItem}`);
+
+		// Display items list in div shopping-validation
+		const shoppingValidationDiv = document.getElementById(
+			"shopping-validation"
+		);
+		const enteredItemsList = document
+			.getElementById("entered-items-list")
+			.cloneNode(true); // Clone existing list
+		shoppingValidationDiv.innerHTML = ""; // Clean div before adding articles
+		shoppingValidationDiv.appendChild(enteredItemsList); // Add cloned list to div shopping-validation
 
 		// Move to the next step
 		currentStep = 2;
