@@ -1,144 +1,91 @@
-// Info-box messages
-const messages = [
-	"Scannez vos articles", // Step 1
-	"Indiquez votre tranche de revenus", // Step 2
-	"Validez vos achats", // Step 3
-	"Merci pour votre soutien", // Step 4
-];
+// Variables de l'application
+const messageBox = document.getElementById("message");
+const enteredItemsList = document.getElementById("entered-items-list");
+const decileSelection = document.getElementById("decile-selection");
+const shoppingValidation = document.getElementById("shopping-validation");
+let enteredItems = [];
 
-const messageContainer = document.getElementById("message");
-let currentStep = 0;
-let itemsScanned = false; // Track if items have been scanned
-let validateList = false;
+// Masquer l'image après saisie du premier article
+const itemImage = document.getElementById("item-image");
 
-// Function to display the message based on index
-function displayMessage(index) {
-	if (index < messages.length) {
-		messageContainer.textContent = messages[index];
-	}
-}
-
-// Reset the shopping list
-function resetShoppingList() {
-	const enteredItemsList = document.getElementById("entered-items-list");
-	enteredItemsList.innerHTML = ""; // Clear the list
-	const shoppingValidationDiv = document.getElementById("shopping-validation");
-	shoppingValidationDiv.innerHTML = "";
-
-	itemsScanned = false; // Reset items scanned tracker
-}
-
-// Focus on user input when the page loads
-document.addEventListener("DOMContentLoaded", () => {
-	// document.getElementById("user-input").focus();
-	displayMessage(currentStep); // Initialize with the first message
-
-	const userInput = document.getElementById("user-input");
-	const submitButton = document.getElementById("validate-item");
-	const resultBox = document.getElementById("entered-items-list");
-
-	submitButton.addEventListener("click", async () => {
-		const inputValue = userInput.value;
-		if (inputValue.trim() !== "") {
-			try {
-				const response = await fetch("/add-item", {
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({ item: inputValue }),
-				});
-				const result = await response.json();
-
-				// Effacer le champ d'input après l'envoi
-				userInput.value = "";
-
-				// Vérifier si des articles sont retournés
-				if (result.state && result.state.item.length > 0) {
-					// Ajouter chaque article scanné à la liste d'éléments
-					result.state.item.forEach((scannedItem) => {
-						const listItem = document.createElement("li");
-						listItem.textContent = scannedItem;
-						resultBox.appendChild(listItem);
-					});
-				}
-			} catch (error) {
-				console.error("Error:", error);
-			}
-		}
-	});
-});
-
-// Click "Validate" in the text input section (for scanning items)
+// Gérer l'ajout d'articles
 document.getElementById("validate-item").addEventListener("click", () => {
 	const userInput = document.getElementById("user-input").value;
-	if (userInput.trim() !== "") {
-		const listItem = document.createElement("li");
-		listItem.textContent = userInput;
-		document.getElementById("entered-items-list").appendChild(listItem);
+	if (userInput) {
+		enteredItems.push(userInput);
+		const li = document.createElement("li");
+		li.textContent = userInput;
+		enteredItemsList.appendChild(li);
 		document.getElementById("user-input").value = "";
-		itemsScanned = true; // Mark that an item has been scanned
+
+		// Masquer l'image
+		itemImage.style.display = "none";
+
+		// Afficher la liste des articles saisis ainsi que les boutons
+		document.getElementById("entered-list-section").style.display = "block";
+		document.getElementById("validate-list").style.display = "block";
+		document.getElementById("cancel-action").style.display = "block";
+
+		// Mise à jour de l'info-box
+		messageBox.textContent = "Article ajouté. Continuez ou validez la liste.";
 	}
 });
 
-// Press Enter to validate text input and add scanned item
-document.getElementById("user-input").addEventListener("keydown", (event) => {
-	if (event.key === "Enter") {
-		document.getElementById("validate-item").click(); // Simulate click on "Validate"
-	}
-});
-
-// Click "Validate" in the scanned items section (only after items are scanned)
+// Gérer la validation de la liste
 document.getElementById("validate-list").addEventListener("click", () => {
-	if (itemsScanned) {
-		// Move to the next step: decile selection
-		currentStep = 1;
-		displayMessage(currentStep); // Display "Indiquez votre tranche de revenus"
-		itemsScanned = false; // Reset scanned items tracker
-		validateList = true;
+	if (enteredItems.length > 0) {
+		// Masquer les sections précédentes si nécessaire
+		document.getElementById("item-input-section").style.display = "none";
+		document.getElementById("entered-list-section").style.display = "none";
+		document.querySelector(".action-buttons-section").style.display = "none";
+
+		// Afficher la sélection de tranche
+		document.getElementById("selection-list-section").style.display = "block";
+		messageBox.textContent = "Sélectionnez une tranche de revenus.";
 	}
 });
 
-// Click "Validate" in the decile selection section (only after items are scanned)
-document.getElementById("validate-decile").addEventListener("click", () => {
-	if (validateList) {
-		const selectedItem = document.getElementById("decile-selection").value;
-		// alert(`Validé: ${selectedItem}`);
+// Validation de la tranche de revenus
+document
+	.getElementById("validate-decile")
+	.addEventListener("click", async () => {
+		const selectedTranche = decileSelection.value;
+		if (selectedTranche !== null) {
+			// Prépare les articles pour la validation
+			const shoppingList = enteredItems
+				.map((item) => `<li>${item}</li>`)
+				.join("");
+			shoppingValidation.innerHTML = shoppingList;
 
-		// Display items list in div shopping-validation
-		const shoppingValidationDiv = document.getElementById(
-			"shopping-validation"
-		);
-		const enteredItemsList = document
-			.getElementById("entered-items-list")
-			.cloneNode(true); // Clone existing list
-		shoppingValidationDiv.innerHTML = ""; // Clean div before adding articles
-		shoppingValidationDiv.appendChild(enteredItemsList); // Add cloned list to div shopping-validation
+			// Afficher la section de validation
+			document.getElementById("shopping-validation-section").style.display =
+				"block";
+			messageBox.textContent = "Voici vos achats. Validez ou annulez.";
 
-		// Move to the next step
-		currentStep = 2;
-		displayMessage(currentStep); // Display "Validez vos achats"
-		validateList = false;
-	}
-});
+			// Afficher le formulaire d'aperçu
+			document.getElementById("preview-section").style.display = "block";
 
-// Click "Validate" in the shopping validation section
-document.getElementById("validate-shopping").addEventListener("click", () => {
-	// alert("Commande validée");
+			// Masquer la sélection de tranche
+			document.getElementById("selection-list-section").style.display = "none";
+		}
+	});
 
-	// Move to the final step
-	currentStep = 3;
-	displayMessage(currentStep); // Display "Merci pour votre soutien"
+// Gérer la génération d'aperçu du ticket
+document.getElementById("ticketForm").addEventListener("submit", async (e) => {
+	e.preventDefault();
 
-	// Reset the shopping list and message after 5 seconds
-	resetShoppingList();
-	setTimeout(() => {
-		currentStep = 0;
-		displayMessage(currentStep); // Display "Scannez vos articles"
-	}, 5000);
-});
+	const tranche = decileSelection.value;
+	const items = enteredItems;
 
-// Click "Cancel" or "Validate" at the end
-document.getElementById("cancel-action").addEventListener("click", () => {
-	resetShoppingList();
-	currentStep = 0;
-	displayMessage(currentStep); // Display "Scannez vos articles"
+	const response = await fetch("/api/generate-preview", {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify({ tranche, items }),
+	});
+
+	const data = await response.json();
+	document.getElementById("preview").innerText = data.preview;
+
+	// Mise à jour de l'info-box
+	messageBox.textContent = "Aperçu généré. Imprimez ou modifiez";
 });

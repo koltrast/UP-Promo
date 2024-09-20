@@ -1,40 +1,53 @@
+// server.js
 const express = require("express");
-const path = require("path");
-const logic = require("./core/logic");
 const app = express();
-const PORT = 3000;
+const port = 3000;
+const { printPreview, printTicket, logo } = require("./core/ticket");
+const calculatePrice = require("./core/priceCalculator");
 
-app.use(express.static(path.join(__dirname, "public")));
-
-// Middleware pour parser les données en JSON
+app.use(express.static("public"));
 app.use(express.json());
 
-// Endpoint pour gérer l'ajout d'articles
-app.post("/add-item", (req, res) => {
-	const { item } = req.body;
-	// Appelle la logique dans logic.js
-	const result = logic.addItem(item);
-	res.json({ state: result });
+app.post("/api/generate-preview", (req, res) => {
+	const { tranche, items } = req.body;
+	const { obj, price } = calculatePrice({ tranche, item: items });
+
+	const previewContent = generatePreviewContent(tranche, obj, price);
+	printPreview(previewContent);
+
+	res.json({ preview: previewContent });
 });
 
-// Endpoint pour gérer la sélection de tranche de revenus
-app.post("/select-decile", (req, res) => {
-	const { tranche } = req.body;
-	const state = { tranche };
-	res.json({ state });
+app.post("/api/print-ticket", (req, res) => {
+	const { previewContent } = req.body;
+	printTicket(previewContent);
+	res.sendStatus(200);
 });
 
-// Endpoint pour générer le ticket
-app.post("/generate-ticket", (req, res) => {
-	const { state } = req.body;
-	const ticket = logic.generatePreviewContent(
-		state.tranche,
-		state.obj,
-		state.price
-	);
-	res.json({ ticket });
+app.listen(port, () => {
+	console.log(`Server running at http://localhost:${port}`);
 });
 
-app.listen(PORT, () => {
-	console.log("Server running on http://localhost:${PORT}");
-});
+function generatePreviewContent(tranche, obj, price) {
+	let content = `${logo}\n\n`;
+
+	content += getTrancheDescription(tranche);
+	content +=
+		obj.length > 1
+			? "les prix ont été ajustés.\n\n"
+			: "le prix a été ajusté.\n\n";
+
+	obj.forEach((o, i) => {
+		content += `    ${o} ${price[i]}€\n`;
+	});
+	content += `\n    TOTAL : ${price.reduce((a, b) => a + b, 0)}€`;
+	content +=
+		"\n\nPour valider, scannez VALIDER.\nPour annuler, scannez ANNULER\n\n.";
+
+	return content;
+}
+
+function getTrancheDescription(tranche) {
+	// Logic pour la description des tranches
+	// Similaire à ce que tu as déjà
+}
