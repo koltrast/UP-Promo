@@ -4,11 +4,16 @@ const { data, logo } = require("./data");
 
 // Function to get user input and manage state
 async function getUserInput(ask) {
+	console.log("Enter value :\n");
+
 	const state = { obj: [], price: [], tranche: null, item: [] };
 	while (true) {
-		const value = await ask("Enter value :\n");
+		const value = await ask("Enter value:\n");
+		console.log("Entered value:", value);
+
 		if (Object.keys(data).includes(value)) {
 			state.item.push(value);
+			console.log("Item added:", value);
 		} else {
 			try {
 				state.tranche = parseInt(value);
@@ -24,6 +29,7 @@ async function getUserInput(ask) {
 			}
 		}
 	}
+	console.log("Final state:", state);
 	return state;
 }
 
@@ -120,12 +126,22 @@ function sleep(ms) {
 	return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-// Export the functions for use in other modules
+// Function to handle adding an item
+function addItem(item) {
+	const state = { obj: [], price: [], tranche: null, item: [] };
+	if (Object.keys(data).includes(item)) {
+		state.item.push(item);
+	}
+	return state;
+}
+
+// a the functions for use in other modules
 module.exports = {
 	getUserInput,
 	calculatePrice,
 	generatePreviewContent,
 	printPreview,
 	printTicket,
+	addItem,
 	// appendToCSV,
 };
