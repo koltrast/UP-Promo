@@ -32,6 +32,39 @@ function resetShoppingList() {
 document.addEventListener("DOMContentLoaded", () => {
 	// document.getElementById("user-input").focus();
 	displayMessage(currentStep); // Initialize with the first message
+
+	const userInput = document.getElementById("user-input");
+	const submitButton = document.getElementById("validate-item");
+	const resultBox = document.getElementById("entered-items-list");
+
+	submitButton.addEventListener("click", async () => {
+		const inputValue = userInput.value;
+		if (inputValue.trim() !== "") {
+			try {
+				const response = await fetch("/add-item", {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({ item: inputValue }),
+				});
+				const result = await response.json();
+
+				// Effacer le champ d'input après l'envoi
+				userInput.value = "";
+
+				// Vérifier si des articles sont retournés
+				if (result.state && result.state.item.length > 0) {
+					// Ajouter chaque article scanné à la liste d'éléments
+					result.state.item.forEach((scannedItem) => {
+						const listItem = document.createElement("li");
+						listItem.textContent = scannedItem;
+						resultBox.appendChild(listItem);
+					});
+				}
+			} catch (error) {
+				console.error("Error:", error);
+			}
+		}
+	});
 });
 
 // Click "Validate" in the text input section (for scanning items)
