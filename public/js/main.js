@@ -104,50 +104,42 @@ validateButton.addEventListener("click", async () => {
 	const tranche = decileSelection.value;
 	const items = enteredItems;
 
-	// Envoie une requête pour imprimer le ticket
-	const response = await fetch("/api/print-ticket", {
-		method: "POST",
-		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify({ tranche, items }),
-	});
+	try {
+		const response = await fetch("/api/print-ticket", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ tranche, items }),
+		});
 
-	const result = await response.json();
-	if (result.success) {
-		messageBox.textContent = "Veuillez prendre votre ticket.";
-		resetShoppingList(); // Réinitialiser après l'impression
-	} else {
-		messageBox.textContent = "Échec de l'impression du ticket.";
+		// Vérification que la réponse est bien du JSON
+		const contentType = response.headers.get("content-type");
+		if (contentType && contentType.includes("application/json")) {
+			const result = await response.json();
+			if (result.success) {
+				messageBox.textContent = "Veuillez prendre votre ticket.";
+				resetShoppingList(); // Réinitialiser après l'impression
+			} else {
+				messageBox.textContent = "Échec de l'impression du ticket.";
+			}
+		} else {
+			messageBox.textContent = "Réponse inattendue du serveur. Attendu : JSON.";
+			console.error("Réponse du serveur non-JSON :", await response.text());
+		}
+	} catch (error) {
+		console.error("Erreur lors de l'impression du ticket : ", error);
+		messageBox.textContent =
+			"Une erreur est survenue lors de l'impression du ticket.";
 	}
 });
 
 // Remise à zero de la liste d’achat et du programme
 function resetShoppingList() {
-	// Vider la liste des éléments saisis affichés
-	const enteredItemsList = document.getElementById("entered-items-list");
+	enteredItems = [];
 	enteredItemsList.innerHTML = "";
-
-	// Vider la section de validation des achats
-	const shoppingValidationDiv = document.getElementById("shopping-validation");
-	shoppingValidationDiv.innerHTML = "";
-
-	// Réinitialiser la liste des articles saisis
-	enteredItems = []; // Remet la liste à zéro
-
-	// Afficher l’image et masquer les autres sections
-	document.getElementById("entered-list-section").style.display = "none";
-	document.getElementById("validate-list").style.display = "none";
-	document.getElementById("cancel-action").style.display = "none";
-	document.getElementById("item-image").style.display = "block";
-
-	// Masquer les boutons après réinitialisation
-	validateButton.style.display = "none";
-	cancelButton.style.display = "none";
-
-	// Réinitialiser le message d'info
-	document.getElementById("message").textContent = "Scannez vos articles.";
+	document.getElementById("preview").innerText = "";
+	document.getElementById("shopping-validation-section").style.display = "none";
+	document.getElementById("preview-section").style.display = "none";
+	document.getElementById("item-input-section").style.display = "block";
+	itemImage.style.display = "block";
+	messageBox.textContent = "Scannez vos articles.";
 }
-
-// Ajout de la fonction annuler
-cancelButton.addEventListener("click", () => {
-	resetShoppingList();
-});
