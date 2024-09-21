@@ -173,7 +173,3 @@ package-lock.json
 
 # editor
 .nova/
-
-
-# Temporary
-*.png
