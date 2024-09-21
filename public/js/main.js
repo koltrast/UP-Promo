@@ -143,3 +143,8 @@ function resetShoppingList() {
 	itemImage.style.display = "block";
 	messageBox.textContent = "Scannez vos articles.";
 }
+
+// Ajout de la fonction annuler
+document.getElementById("cancel-action").addEventListener("click", () => {
+	resetShoppingList();
+});
