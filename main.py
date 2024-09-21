@@ -17,9 +17,9 @@ logo = ('''
 ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 ██ ██ ██ ▄▄ ████ ██ ██ ▄▄ ████ ██ ██ ▄▄ ██
 ██ ██ ██ ▀▀ ████ ██ ██ ▀▀ ████ ██ ██ ▀▀ ██
-██▄▀▀▄██ ███████▄▀▀▄██ ███████▄▀▀▄██ █████
+██ ▀▀ ██ ███████ ▀▀ ██ ███████ ▀▀ ██ █████
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-Union Pragmatique                     2023
+Union Pragmatique                     2024
 
 ''')
 
@@ -46,7 +46,7 @@ while True:
                 break
             except ValueError:
                 print("Invalid input. Please enter a valid column name or integer.")
-    
+
     if item:
         for i in range(len(item)):
             price.append(data.at[tranche, item[i]])
@@ -56,7 +56,7 @@ while True:
                 obj.append("combinaison")
             elif item[i] == "UP-CSQ-23":
                 obj.append("casquette")
-                
+
         with open("preview.tmp", "w", encoding="utf-8") as p:
             p.write(f"{logo}\n\n")
             if tranche == 0:
@@ -76,15 +76,15 @@ while True:
                 p.write(f"    {obj[i]} {price[i]}€\n")
             p.write(f"\n    TOTAL : {sum(price)}€")
             p.write(f"\n\n\nPour valider la commande scannez\nle code-barres VALIDER.\nPour annuler la commande scannez\nle code-barres ANNULER\n\n.")
-                
-        print("printing preview ticket")	
+
+        print("printing preview ticket")
         os.system("lpr -P EPSON_TM-T20III preview.tmp -o cpi=16 -o lpi=7")
         os.remove("preview.tmp")
-    
+
         with open("preview.csv", "a", encoding="utf-8") as t:
             t.write(f"{tranche}; {item}; {price}; {sum(price)}\n")
-            
-        user_input = input("Validate choice ?\n")			
+
+        user_input = input("Validate choice ?\n")
         if user_input == "VALIDER":
             with open("ticket.tmp", "w", encoding="utf-8") as f:
                 f.write(f"{logo}\n\n")
@@ -105,20 +105,20 @@ while True:
                     f.write(f"    {obj[i]} {price[i]}€\n")
                 f.write(f"\n    TOTAL : {sum(price)}€")
                 f.write(f"\n\n\nPar cet achat vous contribuez au\nfinancement d'outils de création mutualisés\ndestinés à l'association d'artistes le\nComité des Choses Concrètes.\n\nTickets imprimés en 2 exemplaires,\nfaisant foi d'authenticité.\n\n.")
-            
-            print("printing client ticket")	
+
+            print("printing client ticket")
             os.system("lpr -P EPSON_TM-T20III ticket.tmp -o cpi=16 -o lpi=7")
-            
+
             with open("ticket.tmp", "a", encoding="utf-8") as f:
                 f.write(f"\n\nExemplaire Union Pragmatique\n\n.")
             sleep(4)
-            
+
             print("printing UP ticket")
             os.system("lpr -P EPSON_TM-T20III ticket.tmp -o cpi=16 -o lpi=7")
             os.remove("ticket.tmp")
-            
+
             with open("trace.csv", "a", encoding="utf-8") as t:
                 t.write(f"{tranche}; {item}; {price}; {sum(price)}\n")
-                
+
         elif user_input == "ANNULER":
             print("cancel by type")
