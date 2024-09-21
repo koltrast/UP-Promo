@@ -3,6 +3,8 @@ const messageBox = document.getElementById("message");
 const enteredItemsList = document.getElementById("entered-items-list");
 const decileSelection = document.getElementById("decile-selection");
 const shoppingValidation = document.getElementById("shopping-validation");
+const validateButton = document.getElementById("validate-ticket");
+const cancelButton = document.getElementById("cancel-action");
 let enteredItems = [];
 
 // Masquer l'image après saisie du premier article
@@ -74,27 +76,48 @@ document
 
 			// Masquer la sélection de tranche
 			document.getElementById("selection-list-section").style.display = "none";
+
+			// Générer l'aperçu du ticket directement après la validation de la tranche
+			const tranche = selectedTranche;
+			const items = enteredItems;
+
+			const response = await fetch("/api/generate-preview", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ tranche, items }),
+			});
+
+			const data = await response.json();
+			document.getElementById("preview").innerText = data.preview;
+
+			// Afficher les boutons "Valider" et "Annuler"
+			validateButton.style.display = "block";
+			cancelButton.style.display = "block";
+
+			// Mise à jour de l'info-box
+			messageBox.textContent = "Validez vos achats.";
 		}
 	});
 
-// Gérer la génération d'aperçu du ticket
-document.getElementById("ticketForm").addEventListener("submit", async (e) => {
-	e.preventDefault();
-
+// Gérer la génération d'impression du ticket lors de la validation
+validateButton.addEventListener("click", async () => {
 	const tranche = decileSelection.value;
 	const items = enteredItems;
 
-	const response = await fetch("/api/generate-preview", {
+	// Envoie une requête pour imprimer le ticket
+	const response = await fetch("/api/print-ticket", {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({ tranche, items }),
 	});
 
-	const data = await response.json();
-	document.getElementById("preview").innerText = data.preview;
-
-	// Mise à jour de l'info-box
-	messageBox.textContent = "Aperçu généré. Imprimez ou modifiez";
+	const result = await response.json();
+	if (result.success) {
+		messageBox.textContent = "Veuillez prendre votre ticket.";
+		resetShoppingList(); // Réinitialiser après l'impression
+	} else {
+		messageBox.textContent = "Échec de l'impression du ticket.";
+	}
 });
 
 // Remise à zero de la liste d’achat et du programme
@@ -116,11 +139,15 @@ function resetShoppingList() {
 	document.getElementById("cancel-action").style.display = "none";
 	document.getElementById("item-image").style.display = "block";
 
+	// Masquer les boutons après réinitialisation
+	validateButton.style.display = "none";
+	cancelButton.style.display = "none";
+
 	// Réinitialiser le message d'info
 	document.getElementById("message").textContent = "Scannez vos articles.";
 }
 
 // Ajout de la fonction annuler
-document.getElementById("cancel-action").addEventListener("click", () => {
+cancelButton.addEventListener("click", () => {
 	resetShoppingList();
 });
