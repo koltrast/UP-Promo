@@ -96,3 +96,31 @@ document.getElementById("ticketForm").addEventListener("submit", async (e) => {
 	// Mise à jour de l'info-box
 	messageBox.textContent = "Aperçu généré. Imprimez ou modifiez";
 });
+
+// Remise à zero de la liste d’achat et du programme
+function resetShoppingList() {
+	// Vider la liste des éléments saisis affichés
+	const enteredItemsList = document.getElementById("entered-items-list");
+	enteredItemsList.innerHTML = "";
+
+	// Vider la section de validation des achats
+	const shoppingValidationDiv = document.getElementById("shopping-validation");
+	shoppingValidationDiv.innerHTML = "";
+
+	// Réinitialiser la liste des articles saisis
+	enteredItems = []; // Remet la liste à zéro
+
+	// Afficher l’image et masquer les autres sections
+	document.getElementById("entered-list-section").style.display = "none";
+	document.getElementById("validate-list").style.display = "none";
+	document.getElementById("cancel-action").style.display = "none";
+	document.getElementById("item-image").style.display = "block";
+
+	// Réinitialiser le message d'info
+	document.getElementById("message").textContent = "Scannez vos articles.";
+}
+
+// Ajout de la fonction annuler
+document.getElementById("cancel-action").addEventListener("click", () => {
+	resetShoppingList();
+});
