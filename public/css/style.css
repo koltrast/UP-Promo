@@ -1,14 +1,98 @@
 body {
 	background-color: blue;
 	color: yellow;
+	font-size: larger;
 	font-family: helvetica, sans-serif;
 	max-width: 80%;
 	margin: auto;
 }
 
 .container {
-	display: flexbox;
 	padding: 2%;
 	margin: 2%;
-	border: 2px solid greenyellow;
+	/* border: 2px solid greenyellow; */
+	text-align: center;
+}
+
+#start {
+	/* border: 2px solid pink; */
+	margin-top: 2%;
+	margin-bottom: 2%;
+	padding: 2%;
+}
+
+#start img {
+	height: 50%;
+}
+
+#step1 {
+	/* border: 2px solid pink; */
+	margin-top: 2%;
+	margin-bottom: 2%;
+	padding: 2%;
+}
+
+#step2 {
+	/* border: 2px solid pink; */
+	margin-top: 2%;
+	margin-bottom: 2%;
+	padding: 2%;
+}
+
+ul {
+	padding: 0;
+	margin: 0;
+}
+
+#decile-selection > li {
+	list-style-type: none;
+	display: flex;
+	align-items: center;
+	line-height: 60px;
+}
+
+#decile-selection > li .item-text {
+	margin-right: 10px;
+}
+
+#decile-selection > li .dots {
+	flex-grow: 1;
+	border-bottom: 2px dotted yellow;
+	margin: 0 10px;
+}
+
+#decile-selection > li img {
+	height: 25px;
+	width: 20%;
+}
+
+#step3 {
+	/* border: 2px solid pink; */
+	padding: 2%;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	text-align: center;
+}
+
+.number-round {
+	background-color: yellow;
+	color: blue;
+	border-radius: 50%;
+	text-align: center;
+}
+
+#step3 .final {
+	display: inline-block;
+	margin: 20px;
+	text-align: center;
+}
+
+#step3 .final img {
+	display: block;
+	margin: 0 auto;
+	height: 50%;
+}
+
+#step3 .final h3 {
+	margin-top: 10px;
 }
