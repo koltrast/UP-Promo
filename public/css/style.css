@@ -1,0 +1,14 @@
+body {
+	background-color: blue;
+	color: yellow;
+	font-family: helvetica, sans-serif;
+	max-width: 80%;
+	margin: auto;
+}
+
+.container {
+	display: flexbox;
+	padding: 2%;
+	margin: 2%;
+	border: 2px solid greenyellow;
+}
