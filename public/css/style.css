@@ -10,12 +10,13 @@ body {
 .container {
 	padding: 2%;
 	margin: 2%;
-	/* border: 2px solid greenyellow; */
 	text-align: center;
 }
 
-#start {
-	/* border: 2px solid pink; */
+#start,
+#step1,
+#step2,
+#step3 {
 	margin-top: 2%;
 	margin-bottom: 2%;
 	padding: 2%;
@@ -23,20 +24,6 @@ body {
 
 #start img {
 	height: 50%;
-}
-
-#step1 {
-	/* border: 2px solid pink; */
-	margin-top: 2%;
-	margin-bottom: 2%;
-	padding: 2%;
-}
-
-#step2 {
-	/* border: 2px solid pink; */
-	margin-top: 2%;
-	margin-bottom: 2%;
-	padding: 2%;
 }
 
 ul {
@@ -64,14 +51,6 @@ ul {
 #decile-selection > li img {
 	height: 25px;
 	width: 20%;
-}
-
-#step3 {
-	/* border: 2px solid pink; */
-	padding: 2%;
-	margin-top: 2%;
-	margin-bottom: 2%;
-	text-align: center;
 }
 
 .number-round {
