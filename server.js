@@ -16,23 +16,28 @@ app.post("/api/generate-preview", (req, res) => {
 	const previewContent = generatePreviewContent(tranche, obj, price);
 
 	// Imprimer l'aperçu en utilisant printPreview
-	printPreview(previewContent);
+	// printPreview(previewContent);
 
 	// Retourner l'aperçu au frontend
 	res.json({ preview: previewContent });
 });
 
 app.post("/api/print-ticket", (req, res) => {
-	const { previewContent } = req.body;
+    const { tranche, items } = req.body; // Récupérer tranche et items
 
-	// Envoyer l'aperçu pour impression
-	if (previewContent) {
-		printTicket(previewContent);
-		res.json({ success: true });
-	} else {
-		res.json({ success: false, message: "Erreur lors de l'impression" });
-	}
+    if (tranche && items) {
+        // Générer l'aperçu du ticket avant impression
+        const { obj, price } = calculatePrice({ tranche, item: items });
+        const previewContent = generatePreviewContent(tranche, obj, price);
+
+        // Envoyer l'aperçu à la fonction d'impression
+        printTicket(previewContent);
+        res.json({ success: true });
+    } else {
+        res.json({ success: false, message: "Erreur lors de l'impression" });
+    }
 });
+
 
 app.listen(port, () => {
 	console.log(`Server running at http://localhost:${port}`);
