@@ -13,10 +13,11 @@ body {
 	text-align: center;
 }
 
-#start,
+#step0,
 #step1,
 #step2,
-#step3 {
+#step3,
+#step4 {
 	margin-top: 2%;
 	margin-bottom: 2%;
 	padding: 2%;
@@ -60,18 +61,18 @@ ul {
 	text-align: center;
 }
 
-#step3 .final {
+#step4 .barcode {
 	display: inline-block;
 	margin: 20px;
 	text-align: center;
 }
 
-#step3 .final img {
+#step4 .barcode img {
 	display: block;
 	margin: 0 auto;
 	height: 50%;
 }
 
-#step3 .final h3 {
+#step4 .barcode h3 {
 	margin-top: 10px;
 }
