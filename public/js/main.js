@@ -59,49 +59,44 @@ document.getElementById("validate-list").addEventListener("click", () => {
 });
 
 // Validation de la tranche de revenus
-document
-  .getElementById("validate-decile")
-  .addEventListener("click", async () => {
-    const selectedTranche = decileSelection.value;
-    if (selectedTranche !== null) {
-      // Prépare les articles pour la validation
-      const shoppingList = enteredItems
-        .map((item) => `<li>${item}</li>`)
-        .join("");
-      shoppingValidation.innerHTML = shoppingList;
+document.getElementById("validate-decile").addEventListener("click", async () => {
+  const selectedTranche = decileSelection.value;
+  if (selectedTranche !== null) {
+    // Prépare les articles pour la validation
+    const shoppingList = enteredItems.map(item => `<li>${item}</li>`).join("");
+    shoppingValidation.innerHTML = shoppingList;
 
-      // Afficher la section de validation
-      document.getElementById("shopping-validation-section").style.display =
-        "block";
-      messageBox.textContent = "Voici vos achats. Validez ou annulez.";
+    // Afficher la section de validation
+    document.getElementById("shopping-validation-section").style.display = "block";
+    messageBox.textContent = "Voici vos achats. Validez ou annulez.";
 
-      // Afficher le formulaire d'aperçu
-      document.getElementById("preview-section").style.display = "block";
+    // Afficher le formulaire d'aperçu
+    document.getElementById("preview-section").style.display = "block";
 
-      // Masquer la sélection de tranche
-      document.getElementById("selection-list-section").style.display = "none";
+    // Masquer la sélection de tranche
+    document.getElementById("selection-list-section").style.display = "none";
 
-      // Générer l'aperçu du ticket directement après la validation de la tranche
-      const tranche = selectedTranche;
-      const items = enteredItems;
+    // Générer l'aperçu du ticket directement après la validation de la tranche
+    const tranche = selectedTranche;
+    const items = enteredItems;
 
-      const response = await fetch("/api/generate-preview", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ tranche, items }),
-      });
+    const response = await fetch("/api/generate-preview", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ tranche, items }),
+    });
 
-      const data = await response.json();
-      document.getElementById("preview").innerText = data.preview;
+    const data = await response.json();
+    document.getElementById("preview").innerText = data.preview;
 
-      // Afficher les boutons "Valider" et "Annuler"
-      validateButton.style.display = "block";
-      cancelButton.style.display = "block";
+    // Afficher les boutons "Valider" et "Annuler"
+    validateButton.style.display = "block";
+    cancelButton.style.display = "block";
 
-      // Mise à jour de l'info-box
-      messageBox.textContent = "Validez vos achats.";
-    }
-  });
+    // Mise à jour de l'info-box
+    messageBox.textContent = "Validez vos achats.";
+  }
+});
 
 // Gérer la génération d'impression du ticket lors de la validation
 validateButton.addEventListener("click", async () => {
@@ -131,8 +126,7 @@ validateButton.addEventListener("click", async () => {
     }
   } catch (error) {
     console.error("Erreur lors de l'impression du ticket : ", error);
-    messageBox.textContent =
-      "Une erreur est survenue lors de l'impression du ticket.";
+    messageBox.textContent = "Une erreur est survenue lors de l'impression du ticket.";
   }
 });
 
@@ -152,12 +146,6 @@ function resetShoppingList() {
 }
 
 // Ajout de la fonction annuler pour chaque contexte
-document.getElementById("cancel-list-action").addEventListener("click", () => {
-    resetShoppingList();
-});
-document.getElementById("cancel-decile-action").addEventListener("click", () => {
-    resetShoppingList();
-});
-document.getElementById("cancel-preview-action").addEventListener("click", () => {
-    resetShoppingList();
-});
+document.getElementById("cancel-list-action").addEventListener("click", resetShoppingList);
+document.getElementById("cancel-decile-action").addEventListener("click", resetShoppingList);
+document.getElementById("cancel-preview-action").addEventListener("click", resetShoppingList);
