@@ -5,7 +5,6 @@ const enteredItemsList = document.getElementById("entered-items-list");
 const decileSelection = document.getElementById("decile-selection");
 const shoppingValidation = document.getElementById("shopping-validation");
 const validateButton = document.getElementById("validate-ticket");
-const cancelButton = document.getElementById("cancel-action");
 let enteredItems = [];
 
 // Masquer l'image après saisie du premier article
@@ -27,7 +26,7 @@ document.getElementById("validate-item").addEventListener("click", () => {
     // Afficher la liste des articles saisis ainsi que les boutons
     document.getElementById("entered-list-section").style.display = "block";
     document.getElementById("validate-list").style.display = "block";
-    document.getElementById("cancel-action").style.display = "block";
+    document.getElementById("cancel-list-action").style.display = "block";
 
     // Mise à jour de l'info-box
     messageBox.textContent = "Article ajouté. Continuez ou validez la liste.";
@@ -145,11 +144,20 @@ function resetShoppingList() {
   document.getElementById("shopping-validation-section").style.display = "none";
   document.getElementById("preview-section").style.display = "none";
   document.getElementById("item-input-section").style.display = "block";
+  document.getElementById("entered-list-section").style.display = "none";
+  document.getElementById("selection-list-section").style.display = "none";
   itemImage.style.display = "block";
   messageBox.textContent = "Scannez vos articles.";
+  document.getElementById("user-input").focus();
 }
 
-// Ajout de la fonction annuler
-document.getElementById("cancel-action").addEventListener("click", () => {
-  resetShoppingList();
+// Ajout de la fonction annuler pour chaque contexte
+document.getElementById("cancel-list-action").addEventListener("click", () => {
+    resetShoppingList();
+});
+document.getElementById("cancel-decile-action").addEventListener("click", () => {
+    resetShoppingList();
+});
+document.getElementById("cancel-preview-action").addEventListener("click", () => {
+    resetShoppingList();
 });
