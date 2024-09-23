@@ -66,25 +66,25 @@ function getTrancheDescription(tranche) {
 	// Logique pour retourner la description de la tranche de revenus
 	switch (tranche) {
 		case "0":
-			return "Vous avez déclaré touché des revenus\ninférieurs au 1er décile.\n";
+			return "Vous avez déclaré toucher des revenus\ninférieurs au 1er décile.\n";
 		case "1":
-			return "Vous avez déclaré touché des revenus\ncompris entre le 1er et le 2e décile.\n";
+			return "Vous avez déclaré toucher des revenus\ncompris entre le 1er et le 2e décile.\n";
 		case "2":
-			return "Vous avez déclaré touché des revenus\ncompris entre le 2e et le 3e décile.\n";
+			return "Vous avez déclaré toucher des revenus\ncompris entre le 2e et le 3e décile.\n";
 		case "3":
-			return "Vous avez déclaré touché des revenus\ncompris entre le 3e et le 4e décile.\n";
+			return "Vous avez déclaré toucher des revenus\ncompris entre le 3e et le 4e décile.\n";
 		case "4":
-			return "Vous avez déclaré touché des revenus\ncompris entre le 4e et le 5e décile.\n";
+			return "Vous avez déclaré toucher des revenus\ncompris entre le 4e et le 5e décile.\n";
 		case "5":
-			return "Vous avez déclaré touché des revenus\ncompris entre le 5e et le 6e décile.\n";
+			return "Vous avez déclaré toucher des revenus\ncompris entre le 5e et le 6e décile.\n";
 		case "6":
-			return "Vous avez déclaré touché des revenus\ncompris entre le 6e et le 7e décile.\n";
+			return "Vous avez déclaré toucher des revenus\ncompris entre le 6e et le 7e décile.\n";
 		case "7":
-			return "Vous avez déclaré touché des revenus\ncompris entre le 7e et le 8e décile.\n";
+			return "Vous avez déclaré toucher des revenus\ncompris entre le 7e et le 8e décile.\n";
 		case "8":
-			return "Vous avez déclaré touché des revenus\ncompris entre le 8e et le 9e décile.\n";
+			return "Vous avez déclaré toucher des revenus\ncompris entre le 8e et le 9e décile.\n";
 		case "9":
-			return "Vous avez déclaré touché des revenus\nsupérieurs au 9e décile\n";
+			return "Vous avez déclaré toucher des revenus\nsupérieurs au 9e décile\n";
 		default:
 			return "Revenus non spécifiés.\n";
 	}
