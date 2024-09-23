@@ -13,7 +13,7 @@ Union Pragmatique                     2024
 async function printPreview(content) {
 	await fs.writeFile("preview.tmp", content);
 	execPrintCommand("preview.tmp");
-	await fs.unlink("preview.tmp");
+	// await fs.unlink("preview.tmp"); // Commenting this fix the issue of not printing
 }
 
 async function printTicket(previewContent) {
@@ -22,7 +22,7 @@ async function printTicket(previewContent) {
 		previewContent + "\n\nTicket imprimé en double exemplaire.";
 	await fs.writeFile("ticket.tmp", ticketContent);
 	execPrintCommand("ticket.tmp");
-	await fs.unlink("ticket.tmp");
+	// await fs.unlink("ticket.tmp");
 }
 
 function execPrintCommand(file) {
