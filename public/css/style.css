@@ -23,10 +23,6 @@ body {
 	padding: 2%;
 }
 
-#start img {
-	height: 50%;
-}
-
 ul {
 	padding: 0;
 	margin: 0;
@@ -75,4 +71,11 @@ ul {
 
 #step4 .barcode h3 {
 	margin-top: 10px;
+}
+
+.barcode-img {
+	background-color: white;
+	padding-left: 8px;
+	padding-right: 8px;
+	display: inline-block;
 }
