@@ -7,9 +7,9 @@ const shoppingValidation = document.getElementById("shopping-validation");
 const validateButton = document.getElementById("validate-ticket");
 const itemImage = document.getElementById("item-image");
 const articleNames = {
-	"UP-VST-23": "veste",
-	"UP-CMB-23": "combinaison",
-	"UP-CSQ-23": "casquette",
+	"UP-VST-23": "Veste",
+	"UP-CMB-23": "Combinaison",
+	"UP-CSQ-23": "Casquette",
 };
 let enteredItems = [];
 
@@ -47,9 +47,8 @@ document.getElementById("validate-item").addEventListener("click", () => {
 
 		// Récupérer la dénomination de l'article, sinon utiliser la référence si non trouvée
 		const articleName = articleNames[userInput] || userInput;
-
 		const li = document.createElement("li");
-		li.textContent = articleName; // Afficher la dénomination de l'article
+		li.textContent = articleName;
 		enteredItemsList.appendChild(li);
 		document.getElementById("user-input").value = "";
 
@@ -66,7 +65,7 @@ document.getElementById("validate-item").addEventListener("click", () => {
 	}
 });
 
-// La touche "enter" valide l’ajout d’article
+// La touche "return" valide l’ajout d’article
 document.getElementById("user-input").addEventListener("keydown", (event) => {
 	if (event.key === "Enter") {
 		document.getElementById("validate-item").click();
@@ -107,7 +106,7 @@ document
 			shoppingValidation.innerHTML = shoppingList;
 			// Afficher la section de validation
 			document.getElementById("shopping-validation-section").style.display =
-				"block";
+				"none";
 			document.getElementById("preview-section").style.display = "block";
 
 			// Masquer la sélection de tranche
