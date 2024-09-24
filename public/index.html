@@ -8,88 +8,100 @@
 	</head>
 	<body>
 		<div class="container">
-			<div id="logo-box">
-				<h1 id="logo">
-					Union<br />
-					Pragmatique
-				</h1>
-				<h1 id="promo">Promo</h1>
+			<div class="top-box">
+				<div id="logo-box">
+					<h1 id="logo">
+						Union<br />
+						Pragmatique
+					</h1>
+					<h1 id="promo">Promo</h1>
+				</div>
 			</div>
-			<!-- Info-box pour afficher les étapes -->
-			<div id="info-box">
-				<h2 id="message">Pour commencer, scannez vos articles.</h2>
+
+			<div class="mid-box">
+				<div id="int-box">
+					<img id="item-image" src="img/schema.svg" alt="Item Image" />
+
+					<!-- Section de saisie des articles -->
+					<div id="item-input-section">
+						<input
+							type="text"
+							id="user-input"
+							placeholder="Scannez vos achats"
+						/>
+						<button id="validate-item">Valider</button>
+					</div>
+
+					<!-- Liste des articles saisis -->
+					<div id="entered-list-section" style="display: none">
+						<h3>Liste d’achats :</h3>
+						<ul id="entered-items-list"></ul>
+					</div>
+
+					<!-- Boutons de validation et annulation -->
+					<div class="action-buttons-section">
+						<button id="validate-list" style="display: none">Suivant</button>
+						<button id="cancel-list-action" style="display: none">
+							Annuler
+						</button>
+					</div>
+
+					<!-- Sélection de tranche de revenus -->
+					<div id="selection-list-section" style="display: none">
+						<!-- <h3>Revenus net annuels :</h3> -->
+						<select id="decile-selection">
+							<option value="0">&lt; à 9570 €</option>
+							<option value="1">entre 9570 € et 14740 €</option>
+							<option value="2">entre 14740 € et 17850 €</option>
+							<option value="3">entre 17850 € et 20560 €</option>
+							<option value="4">entre 20560 € et 23040 €</option>
+							<option value="5">entre 23040 € et 25720 €</option>
+							<option value="6">entre 25720 € et 28770 €</option>
+							<option value="7">entre 28770 € et 32730 €</option>
+							<option value="8">entre 32730 € et 38930 €</option>
+							<option value="9">&gt; 38930 €</option>
+						</select>
+						<div class="action-buttons-section">
+							<button id="validate-decile">Valider la tranche</button>
+							<button id="cancel-decile-action">Annuler</button>
+						</div>
+					</div>
+
+					<!-- Validation des achats -->
+					<div id="shopping-validation-section" style="display: none">
+						<!-- <h3>Vos achats :</h3> -->
+						<ul id="shopping-validation"></ul>
+					</div>
+
+					<!-- Formulaire pour générer l'aperçu -->
+					<div id="preview-section" style="display: none">
+						<div>
+							<pre id="preview"></pre>
+						</div>
+						<div>
+							<p>
+								Une fois la commande validée, la machine va imprimer deux
+								tickets.
+							</p>
+							<p>Conservez le premier.</p>
+							<p>
+								Glissez le second ticket ainsi que la somme correspondante dans
+								une enveloppe, puis déposer cette dernière dans l’urne.
+							</p>
+							<p>L’urne ne rend pas la monnaie.</p>
+						</div>
+						<div class="action-buttons-section">
+							<button id="validate-ticket">Imprimer</button>
+							<button id="cancel-preview-action">Annuler</button>
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>
 
-		<div class="container">
-			<div id="int-box">
-				<img id="item-image" src="img/schema.svg" alt="Item Image" />
-
-				<!-- Section de saisie des articles -->
-				<div id="item-input-section">
-					<input type="text" id="user-input" placeholder="Scannez vos achats" />
-					<button id="validate-item">Valider</button>
-				</div>
-
-				<!-- Liste des articles saisis -->
-				<div id="entered-list-section" style="display: none">
-					<h3>Liste d’achats :</h3>
-					<ul id="entered-items-list"></ul>
-				</div>
-
-				<!-- Boutons de validation et annulation -->
-				<div class="action-buttons-section">
-					<button id="validate-list" style="display: none">Suivant</button>
-					<button id="cancel-list-action" style="display: none">Annuler</button>
-				</div>
-
-				<!-- Sélection de tranche de revenus -->
-				<div id="selection-list-section" style="display: none">
-					<!-- <h3>Revenus net annuels :</h3> -->
-					<select id="decile-selection">
-						<option value="0">&lt; à 9570 €</option>
-						<option value="1">entre 9570 € et 14740 €</option>
-						<option value="2">entre 14740 € et 17850 €</option>
-						<option value="3">entre 17850 € et 20560 €</option>
-						<option value="4">entre 20560 € et 23040 €</option>
-						<option value="5">entre 23040 € et 25720 €</option>
-						<option value="6">entre 25720 € et 28770 €</option>
-						<option value="7">entre 28770 € et 32730 €</option>
-						<option value="8">entre 32730 € et 38930 €</option>
-						<option value="9">&gt; 38930 €</option>
-					</select>
-					<div class="action-buttons-section">
-						<button id="validate-decile">Valider la tranche</button>
-						<button id="cancel-decile-action">Annuler</button>
-					</div>
-				</div>
-
-				<!-- Validation des achats -->
-				<div id="shopping-validation-section" style="display: none">
-					<!-- <h3>Vos achats :</h3> -->
-					<ul id="shopping-validation"></ul>
-				</div>
-
-				<!-- Formulaire pour générer l'aperçu -->
-				<div id="preview-section" style="display: none">
-					<div>
-						<pre id="preview"></pre>
-					</div>
-					<div>
-						<p>
-							Une fois la commande validée, la machine va imprimer deux tickets.
-						</p>
-						<p>Conservez le premier.</p>
-						<p>
-							Glissez le second ticket ainsi que la somme correspondante dans
-							une enveloppe, puis déposer cette dernière dans l’urne.
-						</p>
-						<p>L’urne ne rend pas la monnaie.</p>
-					</div>
-					<div class="action-buttons-section">
-						<button id="validate-ticket">Imprimer</button>
-						<button id="cancel-preview-action">Annuler</button>
-					</div>
+			<div class="bottom-box">
+				<!-- Info-box pour afficher les étapes -->
+				<div id="info-box">
+					<h2 id="message">Pour commencer, scannez vos articles.</h2>
 				</div>
 			</div>
 		</div>
