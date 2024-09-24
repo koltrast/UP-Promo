@@ -6,6 +6,11 @@ const decileSelection = document.getElementById("decile-selection");
 const shoppingValidation = document.getElementById("shopping-validation");
 const validateButton = document.getElementById("validate-ticket");
 const itemImage = document.getElementById("item-image");
+const articleNames = {
+	"UP-VST-23": "veste",
+	"UP-CMB-23": "combinaison",
+	"UP-CSQ-23": "casquette",
+};
 let enteredItems = [];
 
 function updateButtonVisibility(step) {
@@ -39,8 +44,12 @@ document.getElementById("validate-item").addEventListener("click", () => {
 	const userInput = document.getElementById("user-input").value;
 	if (userInput) {
 		enteredItems.push(userInput);
+
+		// Récupérer la dénomination de l'article, sinon utiliser la référence si non trouvée
+		const articleName = articleNames[userInput] || userInput;
+
 		const li = document.createElement("li");
-		li.textContent = userInput;
+		li.textContent = articleName; // Afficher la dénomination de l'article
 		enteredItemsList.appendChild(li);
 		document.getElementById("user-input").value = "";
 
@@ -53,7 +62,7 @@ document.getElementById("validate-item").addEventListener("click", () => {
 		document.getElementById("cancel-list-action").style.display = "block";
 
 		// Mise à jour de l'info-box
-		messageBox.textContent = "Article ajouté. Continuez ou validez la liste.";
+		messageBox.textContent = "Article ajouté, \ncontinuez ou validez la liste.";
 	}
 });
 
@@ -65,7 +74,7 @@ document.getElementById("user-input").addEventListener("keydown", (event) => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-	document.getElementById("user-input").focus();
+	// document.getElementById("user-input").focus();
 });
 
 document.getElementById("validate-list").addEventListener("click", () => {
@@ -183,7 +192,7 @@ function resetShoppingList() {
 
 	// Mise à jour de l'info-box
 	messageBox.textContent = "Scannez vos articles.";
-	document.getElementById("user-input").focus();
+	// document.getElementById("user-input").focus();
 }
 
 // Ajout de la fonction annuler pour chaque contexte
