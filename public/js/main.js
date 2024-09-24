@@ -61,7 +61,8 @@ document.getElementById("validate-item").addEventListener("click", () => {
 		document.getElementById("cancel-list-action").style.display = "block";
 
 		// Mise à jour de l'info-box
-		messageBox.textContent = "Article ajouté, \ncontinuez ou validez la liste.";
+		messageBox.textContent =
+			"Article ajouté. Scannez l’article suivant ou cliquez sur suivant.";
 	}
 });
 
@@ -89,7 +90,7 @@ document.getElementById("validate-list").addEventListener("click", () => {
 		updateButtonVisibility("decileSelection");
 
 		// Mise à jour de l'info-box
-		messageBox.textContent = "Sélectionnez une tranche de revenus.";
+		messageBox.textContent = "Indiquez votre tranche de revenus annuels nets.";
 	}
 });
 
