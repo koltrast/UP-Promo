@@ -23,21 +23,20 @@ app.post("/api/generate-preview", (req, res) => {
 });
 
 app.post("/api/print-ticket", (req, res) => {
-    const { tranche, items } = req.body; // Récupérer tranche et items
+	const { tranche, items } = req.body; // Récupérer tranche et items
 
-    if (tranche && items) {
-        // Générer l'aperçu du ticket avant impression
-        const { obj, price } = calculatePrice({ tranche, item: items });
-        const previewContent = generatePreviewContent(tranche, obj, price);
+	if (tranche && items) {
+		// Générer l'aperçu du ticket avant impression
+		const { obj, price } = calculatePrice({ tranche, item: items });
+		const previewContent = generatePreviewContent(tranche, obj, price);
 
-        // Envoyer l'aperçu à la fonction d'impression
-        printTicket(previewContent);
-        res.json({ success: true });
-    } else {
-        res.json({ success: false, message: "Erreur lors de l'impression" });
-    }
+		// Envoyer l'aperçu à la fonction d'impression
+		printTicket(previewContent);
+		res.json({ success: true });
+	} else {
+		res.json({ success: false, message: "Erreur lors de l'impression" });
+	}
 });
-
 
 app.listen(port, () => {
 	console.log(`Server running at http://localhost:${port}`);
@@ -47,7 +46,7 @@ function generatePreviewContent(tranche, obj, price) {
 	let content = `${logo}\n\n`;
 
 	content += getTrancheDescription(tranche);
-    content += "\nAfin de garantir une équité tarifaire\n"
+	content += "\nAfin de garantir une équité tarifaire,\n";
 	content +=
 		obj.length > 1
 			? "les prix ont été ajustés.\n\n"

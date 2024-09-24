@@ -18,18 +18,18 @@ async function printPreview(content) {
 async function printTicket(previewContent) {
 	// Ajout du texte pour le ticket client
 	let ticketContent =
-		previewContent + "\n\nPar cet achat vous contribuez au" +
+		previewContent +
+		"\n\nPar cet achat, vous contribuez au" +
 		"\nfinancement d'outils de création mutualisés" +
 		"\ndestinés à l'association d'artistes le" +
 		"\nComité des Choses Concrètes." +
-		"\n\nTicket imprimé en double exemplaire," +
+		"\n\nTicket imprimé en deux exemplaires," +
 		"\nfaisant foi d'authenticité.\n\n\n";
 	await fs.writeFile("ticket.tmp", ticketContent);
 	execPrintCommand("ticket.tmp");
-	await new Promise(resolve => setTimeout(resolve, 2000));
+	await new Promise((resolve) => setTimeout(resolve, 2000));
 	execPrintCommand("ticket.tmp");
 }
-
 
 function execPrintCommand(file) {
 	exec(`lpr -P EPSON_TM-T20III ${file} -o cpi=16 -o lpi=7`);
