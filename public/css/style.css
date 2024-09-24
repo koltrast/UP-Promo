@@ -1,9 +1,8 @@
+html,
 body {
 	background-color: blue;
 	color: yellow;
 	font-family: helvetica, sans-serif;
-	/* max-width: 80%;
-	margin: auto; */
 }
 
 .container {
@@ -28,7 +27,7 @@ body {
 
 #logo-box {
 	display: flex;
-	padding: 4px;
+	padding: 10px;
 	flex-direction: column;
 	align-items: flex-end;
 	gap: 11px;
@@ -40,10 +39,10 @@ body {
 	font-size: 56px;
 	font-style: normal;
 	font-weight: 700;
-	line-height: 41px; /* 73.214% */
+	line-height: 41px;
 	letter-spacing: -2.8px;
 	text-indent: 0.57em;
-	margin-bottom: 0px;
+	margin: 0px;
 }
 
 #promo {
@@ -52,9 +51,9 @@ body {
 	font-size: 56px;
 	font-style: oblique;
 	font-weight: 700;
-	line-height: 41px; /* 73.214% */
+	line-height: 41px;
 	letter-spacing: -2.8px;
-	margin-top: 0px;
+	margin: 0px;
 }
 
 #mid-box {
@@ -81,53 +80,3 @@ body {
 	gap: 10px;
 	align-self: stretch;
 }
-/*
-#info-box {
-	display: flex;
-	align-items: center;
-	text-align: left;
-	width: 100%;
-	padding-left: 2%;
-	margin-left: 2%;
-	border: solid pink 2px;
-}
-
-#int-box {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	width: 100%;
-	padding: 2%;
-	border: 2px solid pink;
-	gap: 20px;
-}
-
-/* Union Pragmatique logo settings */
-/* #logo {
-	font-size: 4vw;
-	font-family: helvetica, sans-serif;
-	line-height: 0.7em;
-	position: relative;
-	letter-spacing: -0.05em;
-	text-indent: 0.57em;
-} */
-
-/* #item-image {
-	width: 100%;
-	height: auto;
-}
-
-#item-input-section {
-	display: flex;
-	gap: 10px;
-}
-
-#entered-items-list,
-#item-selection {
-	margin-top: 10px;
-}
-
-.action-buttons-section {
-	display: flex;
-	gap: 10px;
-} */
