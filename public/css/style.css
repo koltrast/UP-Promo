@@ -15,10 +15,10 @@ body {
 
 #logo-box {
 	display: flex;
-	padding: 2%;
-	width: max-content;
-	height: min-content;
-	border: 2px solid pink;
+	padding: 4px;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 11px;
 }
 
 #info-box {
@@ -42,13 +42,34 @@ body {
 }
 
 /* Union Pragmatique logo settings */
-#logo {
+/* #logo {
 	font-size: 4vw;
 	font-family: helvetica, sans-serif;
 	line-height: 0.7em;
 	position: relative;
 	letter-spacing: -0.05em;
 	text-indent: 0.57em;
+} */
+
+#logo {
+	color: #ffff00;
+	font-family: Helvetica;
+	font-size: 56px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 41px; /* 73.214% */
+	letter-spacing: -2.8px;
+	text-indent: 0.57em;
+}
+
+#promo {
+	color: #fff;
+	font-family: Helvetica;
+	font-size: 56px;
+	font-style: oblique;
+	font-weight: 700;
+	line-height: 41px; /* 73.214% */
+	letter-spacing: -2.8px;
 }
 
 #item-image {
