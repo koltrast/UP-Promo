@@ -62,7 +62,7 @@ document.getElementById("validate-item").addEventListener("click", () => {
 
 		// Mise à jour de l'info-box
 		messageBox.textContent =
-			"Article ajouté. Scannez l’article suivant ou cliquez sur suivant.";
+			"Article ajouté. Scannez le prochain article ou cliquez sur suivant.";
 	}
 });
 
@@ -134,7 +134,7 @@ document
 			cancelButton.style.display = "block";
 
 			// Mise à jour de l'info-box
-			messageBox.textContent = "Validez vos achats.";
+			messageBox.textContent = "Validez vos achats, cliquez sur imprimer.";
 		}
 	});
 
