@@ -13,10 +13,6 @@ body {
 	margin-top: auto;
 }
 
-/* div {
-	border: solid greenyellow 2px;
-} */
-
 p {
 	color: #fff;
 }
@@ -32,6 +28,8 @@ p {
 	gap: 20px;
 	flex-shrink: 0;
 }
+
+/* --- Header --- */
 
 #header {
 	display: flex;
@@ -74,6 +72,33 @@ p {
 	height: 39px;
 }
 
+#item-input-section {
+	display: flex;
+	padding: 10px;
+	align-items: center;
+	gap: 10px;
+}
+
+/* hide the user-input field and button
+remember to uncomment */
+/* #user-input {
+	background-color: blue;
+	color: blue;
+	border: none;
+}
+
+::placeholder {
+	color: blue;
+}
+
+#validate-item {
+    background-color: blue;
+    color: blue;
+    border: none;
+} */
+
+/* --- Mid-Box */
+
 #mid-box {
 	display: flex;
 	padding: 0px 10px;
@@ -105,15 +130,6 @@ p {
 	justify-content: center;
 	align-items: center;
 	gap: 10px;
-}
-
-#info-box > h2 {
-	color: #ea84c5;
-	font-family: Helvetica;
-	font-size: 32px;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 41px; /* 128.125% */
 }
 
 .decile-option {
