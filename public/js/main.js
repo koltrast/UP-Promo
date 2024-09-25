@@ -134,7 +134,15 @@ validateButton.addEventListener("click", async () => {
 				? "Veuillez prendre votre ticket."
 				: "Échec de l'impression du ticket.";
 
-			if (result.success) resetShoppingList(); // Réinitialiser après l'impression
+			if (result.success) {
+				setTimeout(() => {
+					console.log("Impression réussie, réinitialisation en cours...");
+					resetShoppingList(); // Réinitialiser après l'impression
+				}, 4000);
+			} else {
+				console.log("Impression échouée, aucune réinitialisation.");
+				messageBox.textContent = "Échec de l'impression du ticket.";
+			}
 		} else {
 			messageBox.textContent = "Réponse inattendue du serveur.";
 			console.error("Réponse non-JSON :", await response.text());
