@@ -60,9 +60,9 @@ document.getElementById("validate-item").addEventListener("click", () => {
 		document.getElementById("validate-list").style.display = "block";
 		document.getElementById("cancel-list-action").style.display = "block";
 
-		// Mise à jour de l'info-box
-		messageBox.textContent =
-			"Article ajouté. Scannez le prochain article ou cliquez sur suivant.";
+		// Mise à jour de l'instruction
+		document.getElementById("message-step1").style.display = "none";
+		document.getElementById("message-step2").style.display = "block";
 	}
 });
 
@@ -89,8 +89,9 @@ document.getElementById("validate-list").addEventListener("click", () => {
 		// Mise à jour des boutons
 		updateButtonVisibility("decileSelection");
 
-		// Mise à jour de l'info-box
-		messageBox.textContent = "Indiquez votre tranche de revenus annuels nets.";
+		// Mise à jour de l'instruction
+		document.getElementById("message-step2").style.display = "none";
+		document.getElementById("message-step3").style.display = "block";
 	}
 });
 
@@ -109,6 +110,10 @@ document
 			document.getElementById("shopping-validation-section").style.display =
 				"none";
 			document.getElementById("preview-section").style.display = "block";
+
+			// Mise à jour de l'instruction
+			document.getElementById("message-step3").style.display = "none";
+			document.getElementById("message-step4").style.display = "block";
 
 			// Masquer la sélection de tranche
 			document.getElementById("selection-list-section").style.display = "none";
@@ -133,8 +138,9 @@ document
 			validateButton.style.display = "block";
 			cancelButton.style.display = "block";
 
-			// Mise à jour de l'info-box
-			messageBox.textContent = "Validez vos achats, cliquez sur imprimer.";
+			// Mise à jour de l'instruction
+			document.getElementById("message-step2").style.display = "none";
+			document.getElementById("message-step3").style.display = "block";
 		}
 	});
 
@@ -190,8 +196,10 @@ function resetShoppingList() {
 	// Mettre à jour l'affichage des boutons
 	updateButtonVisibility("itemInput");
 
-	// Mise à jour de l'info-box
-	messageBox.textContent = "Scannez vos articles.";
+	// Mise à jour de l'instruction
+	document.getElementById("message-step4").style.display = "none";
+	document.getElementById("message-step1").style.display = "block";
+
 	// document.getElementById("user-input").focus();
 }
 
