@@ -141,6 +141,18 @@ remember to uncomment */
 	gap: 10px;
 }
 
+#message-step1,
+#message-step2,
+#message-step3,
+#message-step4 {
+	color: white;
+	font-family: Helvetica;
+	font-size: 32px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 41px;
+}
+
 .decile-option {
 	padding: 10px;
 	cursor: pointer;
