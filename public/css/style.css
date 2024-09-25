@@ -113,3 +113,16 @@ p {
 	font-weight: 400;
 	line-height: 41px; /* 128.125% */
 }
+
+.decile-option {
+	padding: 10px;
+	cursor: pointer;
+}
+
+.decile-option:hover {
+	background-color: pink;
+}
+
+.decile-option.selected {
+	background-color: yellow;
+}

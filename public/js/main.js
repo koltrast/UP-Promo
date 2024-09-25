@@ -86,12 +86,32 @@ document.getElementById("validate-list").addEventListener("click", () => {
 	}
 });
 
+// Ajouter un événement pour gérer la sélection d'une option
+document.querySelectorAll(".decile-option").forEach((option) => {
+	option.addEventListener("click", function () {
+		// Retirer la classe 'selected' de toutes les autres options
+		document
+			.querySelectorAll(".decile-option")
+			.forEach((opt) => opt.classList.remove("selected"));
+
+		// Ajouter la classe 'selected' à l'option cliquée
+		this.classList.add("selected");
+
+		// Stocker la valeur sélectionnée dans une variable ou un attribut
+		const selectedTranche = this.getAttribute("data-value");
+		console.log("Option sélectionnée : ", selectedTranche);
+	});
+});
+
 // Validation de la tranche de revenus
 document
 	.getElementById("validate-decile")
 	.addEventListener("click", async () => {
-		const selectedTranche = decileSelection.value;
-		if (selectedTranche !== null) {
+		// Récupérer l'option sélectionnée
+		const selectedOption = document.querySelector(".decile-option.selected");
+
+		if (selectedOption !== null) {
+			const selectedTranche = selectedOption.getAttribute("data-value");
 			const shoppingList = enteredItems
 				.map((item) => `<li>${item}</li>`)
 				.join("");
@@ -112,17 +132,25 @@ document
 
 			const data = await response.json();
 			document.getElementById("preview").innerText = data.preview;
+		} else {
+			console.log("Aucune option sélectionnée.");
+			messageBox.textContent = "Veuillez sélectionner une tranche de revenus.";
 		}
 	});
 
 // Impression du ticket lors de la validation
 validateButton.addEventListener("click", async () => {
 	try {
+		const selectedOption = document.querySelector(".decile-option.selected");
+		const selectedTranche = selectedOption
+			? selectedOption.getAttribute("data-value")
+			: null;
+
 		const response = await fetch("/api/print-ticket", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({
-				tranche: decileSelection.value,
+				tranche: selectedTranche,
 				items: enteredItems,
 			}),
 		});
@@ -167,6 +195,11 @@ function resetShoppingList() {
 	].forEach((id) => {
 		document.getElementById(id).style.display = "none";
 	});
+
+	// Réinitialiser la sélection de la tranche de revenus
+	document
+		.querySelectorAll(".decile-option")
+		.forEach((opt) => opt.classList.remove("selected"));
 
 	// Réafficher la section de saisie
 	document.getElementById("item-input-section").style.display = "block";
