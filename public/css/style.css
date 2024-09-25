@@ -108,6 +108,15 @@ remember to uncomment */
 	align-self: stretch;
 }
 
+#hero {
+	display: flex;
+	width: 1052px;
+	height: 764px;
+	padding: 0px 0.041px 0.015px 0px;
+	justify-content: center;
+	align-items: center;
+}
+
 #itemImage {
 	width: 653.205px;
 	height: 570.941px;
