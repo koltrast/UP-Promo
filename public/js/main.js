@@ -44,6 +44,10 @@ function updateButtonVisibility(step) {
 		document.getElementById(id).style.display = buttons[id];
 	});
 }
+// Ajoute un focus sur user-input
+document.addEventListener("DOMContentLoaded", () => {
+	document.getElementById("user-input").focus();
+});
 
 // Gérer l'ajout d'articles
 document.getElementById("validate-item").addEventListener("click", () => {
