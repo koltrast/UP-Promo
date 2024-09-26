@@ -210,6 +210,7 @@ function resetShoppingList() {
 	document.getElementById("message-step3").style.display = "none";
 	document.getElementById("message-step4").style.display = "none";
 	document.getElementById("message-step1").style.display = "block";
+	messageBox.textContent = "";
 }
 
 // Gérer les annulations d'action
