@@ -11,6 +11,7 @@ body {
 	font-style: normal;
 	font-weight: 400;
 	line-height: 41px;
+	overflow: hidden;
 }
 
 #logo-box {
@@ -50,6 +51,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
+	width: 100%;
 	padding: 60px;
 	box-sizing: border-box; /* Pour inclure le padding dans la hauteur totale */
 }
@@ -80,6 +82,7 @@ body {
 #int-step1 img {
 	height: auto; /* Laisser l'image conserver son aspect ratio */
 	max-width: 100%; /* Ne pas dépasser la largeur du conteneur */
+	max-height: 70vh; /* Limiter la hauteur à 70% de la hauteur de la fenêtre */
 }
 
 #message-step1 {
@@ -151,7 +154,7 @@ body {
 	display: flex; /* Assurez-vous que le message est affiché */
 	flex-direction: column; /* Pour empiler les paragraphes */
 	color: white;
-	max-width: 30%; /* Limiter la largeur pour que cela ne déborde pas */
+	max-width: 50%; /* Limiter la largeur pour que cela ne déborde pas */
 }
 
 .decile-option {
