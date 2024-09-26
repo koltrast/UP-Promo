@@ -82,12 +82,14 @@ body {
 #int-step1 img {
 	height: auto; /* Laisser l'image conserver son aspect ratio */
 	max-width: 100%; /* Ne pas dépasser la largeur du conteneur */
-	max-height: 70vh; /* Limiter la hauteur à 70% de la hauteur de la fenêtre */
+	max-height: 60vh; /* Limiter la hauteur à 70% de la hauteur de la fenêtre */
 }
 
 #message-step1 {
 	text-align: center; /* Centrer le texte */
 	margin-top: 10px; /* Ajouter un peu d'espace entre l'image et le message */
+	display: flex; /* Assurez-vous qu'il est affiché */
+	flex-direction: column; /* Pour empiler les paragraphes si besoin */
 }
 
 #int-step2,
