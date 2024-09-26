@@ -44,7 +44,7 @@ function updateButtonVisibility(step) {
 		document.getElementById(id).style.display = buttons[id];
 	});
 }
-// Ajoute un focus sur user-input
+
 document.addEventListener("DOMContentLoaded", () => {
 	document.getElementById("user-input").focus();
 });
@@ -215,6 +215,9 @@ function resetShoppingList() {
 	document.getElementById("message-step4").style.display = "none";
 	document.getElementById("message-step1").style.display = "block";
 	messageBox.textContent = "";
+
+	// Mettre le focus sur l'input après réinitialisation
+	document.getElementById("user-input").focus();
 }
 
 // Gérer les annulations d'action
