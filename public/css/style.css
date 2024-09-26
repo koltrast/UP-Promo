@@ -158,15 +158,17 @@ body {
 }
 
 .decile-option {
-	padding: 10px;
+	padding: 5px;
 	cursor: pointer;
 }
 
 .decile-option:hover {
-	background-color: pink;
+	color: blue;
+	background-color: lightgrey;
 }
 
 .decile-option.selected {
+	color: blue;
 	background-color: yellow;
 }
 
@@ -192,3 +194,7 @@ body {
 	line-height: 20px; 125%
 	letter-spacing: -1.12px;
 } */
+
+#message {
+	color: blue;
+}
