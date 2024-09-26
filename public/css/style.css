@@ -127,6 +127,10 @@ body {
 	justify-content: center;
 }
 
+#entered-headline {
+	color: white;
+}
+
 .bottom-box {
 	flex-shrink: 0; /* Ne se rétrécit pas */
 	display: flex;
@@ -199,4 +203,11 @@ body {
 
 #message {
 	display: none;
+}
+
+#validate-item,
+#user-input {
+	color: blue;
+	background-color: blue;
+	border: none;
 }
