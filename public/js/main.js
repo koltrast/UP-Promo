@@ -206,6 +206,8 @@ function resetShoppingList() {
 	itemImage.style.display = "block";
 
 	updateButtonVisibility("itemInput");
+	document.getElementById("message-step2").style.display = "none";
+	document.getElementById("message-step3").style.display = "none";
 	document.getElementById("message-step4").style.display = "none";
 	document.getElementById("message-step1").style.display = "block";
 }
