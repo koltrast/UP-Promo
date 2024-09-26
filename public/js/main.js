@@ -47,6 +47,13 @@ function updateButtonVisibility(step) {
 
 document.addEventListener("DOMContentLoaded", () => {
 	document.getElementById("user-input").focus();
+
+	document.getElementById("validate-decile").style.display = "none";
+	document.getElementById("cancel-decile-action").style.display = "none";
+	document.getElementById("validate-list").style.display = "none";
+	document.getElementById("cancel-list-action").style.display = "none";
+	document.getElementById("validate-ticket").style.display = "none";
+	document.getElementById("cancel-preview-action").style.display = "none";
 });
 
 // Gérer l'ajout d'articles
@@ -218,6 +225,13 @@ function resetShoppingList() {
 
 	// Mettre le focus sur l'input après réinitialisation
 	document.getElementById("user-input").focus();
+
+	document.getElementById("validate-decile").style.display = "none";
+	document.getElementById("cancel-decile-action").style.display = "none";
+	document.getElementById("validate-list").style.display = "none";
+	document.getElementById("cancel-list-action").style.display = "none";
+	document.getElementById("validate-ticket").style.display = "none";
+	document.getElementById("cancel-preview-action").style.display = "none";
 }
 
 // Gérer les annulations d'action
