@@ -1,31 +1,18 @@
 html,
 body {
+	font-family: helvetica, sans-serif;
 	background-color: blue;
 	color: yellow;
-	font-family: helvetica, sans-serif;
-}
-
-.container {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
-	width: 100vw;
-	height: 100vh;
-	padding: 60px;
-	box-sizing: border-box; /* Pour inclure le padding dans la taille */
-}
-
-/* Header en haut de l'écran */
-#header {
-	display: flex;
-	justify-content: space-between; /* Espacement entre logo et input */
-	align-items: center;
 	width: 100%;
-	flex-shrink: 0; /* Empêche le header de rétrécir */
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-size: 32px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 41px;
 }
 
-/* Logo-box et Item-input-section */
 #logo-box {
 	display: flex;
 	padding: 10px;
@@ -59,37 +46,45 @@ body {
 	height: 39px;
 }
 
-#item-input-section {
+.container {
 	display: flex;
-	gap: 10px;
+	flex-direction: column;
+	height: 100%;
+	padding: 60px;
+	box-sizing: border-box; /* Pour inclure le padding dans la hauteur totale */
 }
 
-/* Mid-box qui s'étend pour occuper l'espace restant */
-#mid-box {
+#header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+}
+
+.mid-box {
+	flex: 1; /* Prend l'espace restant */
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	width: 100%;
-	flex-grow: 1; /* Permet au mid-box de grandir pour occuper l'espace */
-	gap: 20px;
 }
 
-/* int-step1 - Centrage de l'image */
 #int-step1 {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 100%;
+	width: 100%; /* Prend toute la largeur */
 }
 
 #int-step1 img {
+	height: 100%;
 	max-width: 100%;
-	height: auto;
+	object-fit: contain;
 }
 
-/* int-step2 - Disposition des éléments */
-#int-step2 {
+#int-step2,
+#int-step3,
+#int-step4 {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -97,20 +92,10 @@ body {
 	gap: 20px;
 }
 
-/* Liste et bouton dans int-step2 */
 #entered-list-section {
 	display: flex;
-	flex-direction: row; /* Pour que les colonnes soient côte à côte */
+	flex-direction: row;
 	gap: 20px;
-}
-
-#entered-headline {
-	flex: 1;
-	text-align: left;
-}
-
-#step2-col2 {
-	flex: 2;
 }
 
 #entered-items-list {
@@ -119,26 +104,22 @@ body {
 	margin: 0;
 }
 
-/* Action buttons */
 .action-buttons-section {
 	display: flex;
 	gap: 10px;
 	justify-content: center;
 }
 
-/* Bottom box avec info-box centrée */
-#bottom-box {
+.bottom-box {
+	flex-shrink: 0; /* Ne se rétrécit pas */
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 100%;
-	flex-shrink: 0; /* Empêche le bottom box de rétrécir */
 }
 
 #info-box {
 	display: flex;
-	padding: 10px;
-	justify-content: center;
+	flex-direction: column;
 	align-items: center;
 	gap: 10px;
 }
