@@ -232,6 +232,8 @@ function resetShoppingList() {
 	document.getElementById("cancel-list-action").style.display = "none";
 	document.getElementById("validate-ticket").style.display = "none";
 	document.getElementById("cancel-preview-action").style.display = "none";
+
+	document.getElementById("entered-list-section").style.display = "none";
 }
 
 // Gérer les annulations d'action
