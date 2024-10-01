@@ -6,7 +6,7 @@ const enteredItemsList = document.getElementById("entered-items-list");
 const decileSelection = document.getElementById("decile-selection");
 const shoppingValidation = document.getElementById("shopping-validation");
 const validateButton = document.getElementById("validate-ticket");
-const itemImage = document.getElementById("int-step1");
+const itemImage = document.getElementById("item-image");
 const articleNames = {
 	"UP-VST-23": "Veste",
 	"UP-CMB-23": "Combinaison",
@@ -44,6 +44,17 @@ function updateButtonVisibility(step) {
 		document.getElementById(id).style.display = buttons[id];
 	});
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+	document.getElementById("user-input").focus();
+
+	document.getElementById("validate-decile").style.display = "none";
+	document.getElementById("cancel-decile-action").style.display = "none";
+	document.getElementById("validate-list").style.display = "none";
+	document.getElementById("cancel-list-action").style.display = "none";
+	document.getElementById("validate-ticket").style.display = "none";
+	document.getElementById("cancel-preview-action").style.display = "none";
+});
 
 // Gérer l'ajout d'articles
 document.getElementById("validate-item").addEventListener("click", () => {
@@ -206,8 +217,23 @@ function resetShoppingList() {
 	itemImage.style.display = "block";
 
 	updateButtonVisibility("itemInput");
+	document.getElementById("message-step2").style.display = "none";
+	document.getElementById("message-step3").style.display = "none";
 	document.getElementById("message-step4").style.display = "none";
 	document.getElementById("message-step1").style.display = "block";
+	messageBox.textContent = "";
+
+	// Mettre le focus sur l'input après réinitialisation
+	document.getElementById("user-input").focus();
+
+	document.getElementById("validate-decile").style.display = "none";
+	document.getElementById("cancel-decile-action").style.display = "none";
+	document.getElementById("validate-list").style.display = "none";
+	document.getElementById("cancel-list-action").style.display = "none";
+	document.getElementById("validate-ticket").style.display = "none";
+	document.getElementById("cancel-preview-action").style.display = "none";
+
+	document.getElementById("entered-list-section").style.display = "none";
 }
 
 // Gérer les annulations d'action
