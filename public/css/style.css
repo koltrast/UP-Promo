@@ -1,168 +1,80 @@
 html,
 body {
-	font-family: helvetica, sans-serif;
-	background-color: blue;
-	color: yellow;
-	width: 100%;
-	height: 100%;
 	margin: 0;
 	padding: 0;
-	font-size: 32px;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 41px;
+	height: 100%;
+	box-sizing: border-box;
+	background-color: blue;
+	color: white;
+	font-family: Helvetica, sans-serif;
+	font-size: 16px;
 	overflow: hidden;
-}
-
-#logo-box {
-	display: flex;
-	padding: 10px;
-	flex-direction: column;
-	align-items: flex-end;
-	gap: 8px;
-}
-
-#logo {
-	color: #ffff00;
-	font-family: Helvetica;
-	font-size: 56px;
-	font-style: normal;
-	font-weight: 700;
-	line-height: 41px;
-	letter-spacing: -2.8px;
-	text-indent: 0.57em;
-	margin: 0px;
-}
-
-#promo {
-	width: 204px;
-	height: 39px;
-	color: #fff;
-	font-family: Helvetica;
-	font-size: 56px;
-	font-style: oblique;
-	font-weight: 700;
-	line-height: 41px;
-	letter-spacing: -2.8px;
-	margin: 0px;
-	width: 204px;
-	height: 39px;
 }
 
 .container {
 	display: flex;
 	flex-direction: column;
-	height: 100%;
+	min-height: 100vh;
 	width: 100%;
-	padding: 60px;
-	box-sizing: border-box; /* Pour inclure le padding dans la hauteur totale */
+	padding: 10px;
+	box-sizing: border-box;
+	gap: 10px;
+	overflow: hidden;
 }
 
 #header {
 	display: flex;
+	flex-direction: row;
 	justify-content: space-between;
+	padding: 10px;
+	gap: 10px;
+}
+
+#middle {
+	display: flex;
+	flex-grow: 1;
+	flex-direction: column;
+	justify-content: flex-start;
+	padding: 10px;
+	gap: 10px;
+	overflow-y: auto;
+}
+
+#step1,
+#step3 {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+	gap: 10px;
+}
+
+#step1 img {
+	max-width: 100%;
+	max-height: 50vh;
+	object-fit: contain;
+}
+
+#step2,
+#step4 {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	justify-content: center;
 	align-items: center;
 	padding: 10px;
-}
-
-.mid-box {
-	flex: 1; /* Prend l'espace restant */
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-
-#int-step1 {
-	display: flex;
-	flex-direction: column; /* Changer à column pour empiler l'image et le message */
-	justify-content: center;
-	align-items: center; /* Centre le contenu horizontalement */
-	width: 100%; /* Prend toute la largeur */
-}
-
-#int-step1 img {
-	height: auto; /* Laisser l'image conserver son aspect ratio */
-	max-width: 100%; /* Ne pas dépasser la largeur du conteneur */
-	max-height: 60vh; /* Limiter la hauteur à 70% de la hauteur de la fenêtre */
-}
-
-#message-step1 {
-	text-align: center; /* Centrer le texte */
-	margin-top: 10px; /* Ajouter un peu d'espace entre l'image et le message */
-	display: flex; /* Assurez-vous qu'il est affiché */
-	flex-direction: column; /* Pour empiler les paragraphes si besoin */
-}
-
-#int-step2,
-#int-step3 {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 20px;
-}
-
-#int-step4 {
-	width: 100%;
-	display: flex;
-	justify-content: center; /* Centre le contenu horizontalement */
-	align-items: flex-start; /* Aligne les éléments en haut */
-	gap: 20px; /* Espace entre le preview et le message */
-}
-
-#entered-list-section {
-	display: flex;
-	flex-direction: row;
-	gap: 20px;
-}
-
-#entered-items-list {
-	list-style-type: none;
-	padding: 0;
-	margin: 0;
-}
-
-.action-buttons-section {
-	display: flex;
-	gap: 10px;
-	justify-content: center;
-}
-
-#entered-headline {
-	color: white;
-}
-
-.bottom-box {
-	flex-shrink: 0; /* Ne se rétrécit pas */
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-#info-box {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
 	gap: 10px;
 }
 
-#message-step1,
-#message-step2,
-#message-step3,
-#message-step4 {
-	color: white;
-	font-family: Helvetica;
-	font-size: 32px;
-	font-weight: 400;
-	line-height: 1.3;
-}
-
-#message-step4 {
-	display: flex; /* Assurez-vous que le message est affiché */
-	flex-direction: column; /* Pour empiler les paragraphes */
-	color: white;
-	max-width: 50%; /* Limiter la largeur pour que cela ne déborde pas */
+#selection-list-section {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	justify-content: center;
+	padding: 10px;
+	gap: 10px;
 }
 
 .decile-option {
@@ -180,37 +92,47 @@ body {
 	background-color: yellow;
 }
 
-#preview {
+.step2-4-main {
 	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
 	justify-content: center;
 	align-items: center;
+}
+
+.items {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 10px;
 	gap: 10px;
-	border: 12px solid var(--Grays-White, #fff);
-	background: #fff;
-	font-size: 16px;
+}
+
+.button-container {
+	display: flex;
+	justify-content: center;
+	padding: 10px;
+	gap: 10px;
+}
+
+#preview {
+	background-color: white;
 	color: black;
-	width: auto; /* Ajustez si nécessaire */
-	max-width: 100%; /* Limitez la largeur pour éviter qu'il ne prenne trop d'espace */
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
-/* pre {
-	color: #000;
-	font-family: monospace;
-	font-size: 16px;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 20px; 125%
-	letter-spacing: -1.12px;
-} */
-
-#message {
-	display: none;
+#step2-1,
+#step2-2,
+#message-step4 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
-#validate-item,
-#user-input {
-	color: blue;
-	background-color: blue;
-	border: none;
-	width: 16px;
+#footer {
+	display: flex;
+	justify-content: center;
+	padding: 10px;
+	gap: 10px;
 }

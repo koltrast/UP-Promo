@@ -1,0 +1,32 @@
+#logo-box {
+	display: flex;
+	padding: 10px;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 8px;
+}
+
+#logo {
+	color: #ffff00;
+	font-family: Helvetica;
+	font-size: 56px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 41px;
+	letter-spacing: -2.8px;
+	text-indent: 0.57em;
+	margin: 0px;
+}
+
+#promo {
+	color: #fff;
+	font-family: Helvetica;
+	font-size: 56px;
+	font-style: oblique;
+	font-weight: 700;
+	line-height: 41px;
+	letter-spacing: -2.8px;
+	margin: 0px;
+	width: 204px;
+	height: 39px;
+}
