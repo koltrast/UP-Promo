@@ -1,74 +1,88 @@
 # Union Pragmatique Promo
 
-This project is a part of Union Pragmatique's artwork for Œuvrir exhibition. The user interface is composed with a thermal printer and a barcode scanner.
+**Union Pragmatique Promo** is a project dedicated to the creation and sale of reclaimed workwear, adorned with the Union Pragmatique logo. These garments, once functional, are transformed into artistic products and sold with prices adjusted based on the buyer's self-declared net monthly income.
 
-The program has been tested to work with a raspberry Pi (Raspberry Pi OS Lite 64bits - 2022-09) and an EPSON TM-T20III printer.
+The proceeds from these sales help fund the **Comité des Choses Concrètes**, an association co-founded by Union Pragmatique, aimed at acquiring and sharing creative tools with artists.
 
-## Add and configure the printer
+## Project Overview
 
-The printer's driver _tmx-cups-src-ThermalReceipt-3.0.0.0_ included in ressources folder need to be built.
+This project is part of Union Pragmatique's artwork for the Œuvrir exhibition. Initially, the project featured a user interface with a thermal printer and a barcode scanner. The project has since been rewritten, with the old Python code moved to the `feature/cli` branch.
 
-After a fresh install, update the system :
+It has been tested on a Raspberry Pi (Raspberry Pi OS Lite 64-bit, 2022-09) with an EPSON TM-T20III printer.
 
-```
-$ sudo apt update && sudo apt upgrade
-```
+## Printer Setup and Configuration
 
-Install the printer's dependencies :
+The printer driver, **tmx-cups-src-ThermalReceipt-3.0.0.0**, located in the `resources` folder, must be built manually.
 
-```
- $ sudo apt install cups cups-bsd cmake libcupsimage2-dev
-```
+### Step 1: Update System
 
-Build the driver
+After a fresh install, update your system by running:
 
-```
-$ tar -xzvf tmx-cups-src-ThermalReceipt-3.0.0.0.tar.gz
-$ cd Thermal\ Receipt
-$ sudo build.sh
-$ sudo install.sh
+```bash
+sudo apt update && sudo apt upgrade
 ```
 
-Add user to the lpadmin group :
+### Step 2: Install Printer Dependencies
 
-```
-$ sudo usermod -a -G lpadmin <username>
-```
+Install the required dependencies for the printer:
 
-Because the system running is headless, the cups admin page has to be accessible from another machine (within the same network).
-
-It's possible to either replace the cupsd.conf with the one provided in ressources folder,
-
-```
-$ sudo cp ressources/cupsd.conf /etc/cups/cupsd.conf
+```bash
+sudo apt install cups cups-bsd cmake libcupsimage2-dev
 ```
 
-or do it manually editing cupsd.conf :
+### Step 3: Build the Printer Driver
 
-```
-$ sudo nano /etc/cups/cupsd.conf
+To build the driver:
+
+```bash
+tar -xzvf tmx-cups-src-ThermalReceipt-3.0.0.0.tar.gz
+cd Thermal\ Receipt
+sudo ./build.sh
+sudo ./install.sh
 ```
 
-Inside the file, look for this section:
+### Step 4: Add User to lpadmin Group
 
+Add your user to the `lpadmin` group:
+
+```bash
+sudo usermod -a -G lpadmin <username>
 ```
+
+### Step 5: Configure CUPS for Remote Access
+
+Since the Raspberry Pi is headless, you need to enable remote access to the CUPS admin page from another machine within the same network.
+
+You can either replace the default `cupsd.conf` file with the one provided in the `resources` folder:
+
+```bash
+sudo cp resources/cupsd.conf /etc/cups/cupsd.conf
+```
+
+Or, manually edit `/etc/cups/cupsd.conf`:
+
+```bash
+sudo nano /etc/cups/cupsd.conf
+```
+
+Replace the following line:
+
+```bash
 # Only listen for connections from the local machine
 Listen localhost:631
 ```
 
-Comment out the “Listen localhost:631” line and replace it with the following:
+With:
 
-```
+```bash
 # Only listen for connections from the local machine
 # Listen localhost:631
 Port 631
 ```
 
-This instructs CUPS to listen for any contact on any networking interface as long as it is directed at port 631.
+Scroll down to the “location” sections and add the lines shown below:
 
-Scroll further down in the config file until you see the “location” sections. In the block below, we’ve bolded the lines you need to add to the config:
-
-```
+```bash
 # Restrict access to the server...
 < Location / >
 Order allow,deny
@@ -91,76 +105,92 @@ Allow @local
 < /Location >
 ```
 
-The addition of the “allow @local” line allows access to CUPS from any computer on your local network. Anytime you make changes to the CUPS configuration file, you’ll need to restart the CUPS server. Do so with the following command:
+This will allow access to CUPS from any computer on your local network. After making these changes, restart the CUPS service:
 
-```
-$ sudo /etc/init.d/cups restart
-```
-
-After restarting CUPS, you should be able to access the administration panel via any computer on your local network by pointing its web browser at http://[the Pi’s IP or hostname]:631.
-
-## Run
-
-Install python and pip
-
-```
-$ sudo apt install python3 python3-pip
+```bash
+sudo /etc/init.d/cups restart
 ```
 
-install pandas
+You should now be able to access the CUPS admin panel via a web browser at `http://[Pi-IP-or-hostname]:631`.
 
-```
-$ pip install pandas
+## Running the Program
+
+### Install Node.js Dependencies
+
+To install the necessary Node.js dependencies:
+
+```bash
+npm install
 ```
 
-run the script
+### Start the Server
 
-```
-$ python3 main.py
+To run the Node.js server:
+
+```bash
+node server.js
 ```
 
-### set auto login with raspi-config
+### Running the Python Version (`feature/cli`)
 
+Install Python and `pip`:
+
+```bash
+sudo apt install python3 python3-pip
 ```
+
+Install the required Python packages:
+
+```bash
+pip install pandas
+```
+
+Run the Python script:
+
+```bash
+python3 main.py
+```
+
+## Set Up Auto Login with raspi-config
+
+To enable auto-login:
+
+```bash
 sudo raspi-config
 ```
 
-Choose option: 1 System Options
-Choose option: S5 Boot / Auto Login Choose option: B2 Console Autologin
-Select Finish, and reboot the Raspberry Pi.
+Choose the following options:
 
-## make the script running on start
+1. **System Options**
+2. **S5 Boot / Auto Login**
+3. **B2 Console Autologin**
 
-create a script
+Then select **Finish** and reboot the Raspberry Pi.
 
-```
+## Make the Script Run on Startup
+
+Create a script named `blue.sh`:
+
+```bash
 cat > blue.sh << EOF
 #!/bin/sh
 python3 main.py
 EOF
 ```
 
-Make the script executable
+Make the script executable:
 
-```
-chmod +x syncscript.sh
-```
-
-Append blue script to .bashrc
-
-```
-echo "./blue.sh" | cat .bashrc
+```bash
+chmod +x blue.sh
 ```
 
-## source
+Append the script to `.bashrc` so that it runs on startup:
 
-https://www.howtogeek.com/169679/how-to-add-a-printer-to-your-raspberry-pi-or-other-linux-computer/
-https://www.raspberry-pi-geek.com/Archive/2016/20/Print-with-shell-commands-courtesy-of-CUPS
-
-# JS Port
-
-## Dependencies
-
+```bash
+echo "./blue.sh" >> ~/.bashrc
 ```
-npm install blessed blessed-contrib fs
-```
+
+## Sources
+
+- [How to Add a Printer to Your Raspberry Pi or Other Linux Computer](https://www.howtogeek.com/169679/how-to-add-a-printer-to-your-raspberry-pi-or-other-linux-computer/)
+- [Print with Shell Commands Courtesy of CUPS](https://www.raspberry-pi-geek.com/Archive/2016/20/Print-with-shell-commands-courtesy-of-CUPS)
