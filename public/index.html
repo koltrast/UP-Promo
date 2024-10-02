@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="css/UPPromoLogo.css" />
-		<title>UP Promo layout</title>
+		<title>Union Pragmatique Promo</title>
 	</head>
 	<body>
 		<div class="container">
@@ -16,7 +16,7 @@
 						<h1 id="promo">Promo</h1>
 					</div>
 				</div>
-				<div id="header-right">
+				<div id="item-input">
 					<input
 						id="user-input"
 						type="text"
@@ -38,14 +38,7 @@
 						<div class="items">
 							<div id="step2-1"><h3>Vos achats :</h3></div>
 							<div id="step2-2">
-								<ul id="entered-item-list">
-									<li>veste</li>
-									<li>veste</li>
-									<li>veste</li>
-									<li>veste</li>
-									<li>veste</li>
-									<li>veste</li>
-								</ul>
+								<ul id="entered-items-list"></ul>
 							</div>
 						</div>
 					</div>
@@ -87,7 +80,7 @@
 						<div class="decile-option" data-value="9">supérieurs à 38930 €</div>
 					</div>
 					<div class="button-container">
-						<button>Suivant</button>
+						<button id="validate-decile">Suivant</button>
 					</div>
 					<div id="message-step3">
 						<p>3. Indiquez votre tranche de revenus annuels nets.</p>
@@ -95,40 +88,7 @@
 				</div>
 				<div id="step4" style="display: none">
 					<div class="items">
-						<div id="preview">
-							<pre>
-
-▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-██ ██ ██ ▄▄ ████ ██ ██ ▄▄ ████ ██ ██ ▄▄ ██
-██ ██ ██ ▀▀ ████ ██ ██ ▀▀ ████ ██ ██ ▀▀ ██
-██ ▀▀ ██ ███████ ▀▀ ██ ███████ ▀▀ ██ █████
-▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-Union Pragmatique                     2024
-
-
-Vous avez déclaré toucher des revenus
-compris entre le 4e et le 5e décile.
-
-Afin de garantir une équité tarifaire,
-le prix a été ajusté.
-
-    veste 50€
-
-    TOTAL : 50€
-
-Par cet achat, vous contribuez au
-financement d'outils de création mutualisés
-destinés à l'association d'artistes le
-Comité des Choses Concrètes.
-
-Ticket imprimé en deux exemplaires,
-faisant foi d'authenticité.
-
-
-
-                        </pre
-							>
-						</div>
+						<div><pre id="preview"></pre></div>
 						<div id="message-step4">
 							<p>4. Validez la commande.</p>
 							<p>
@@ -145,8 +105,8 @@ faisant foi d'authenticité.
 					</div>
 
 					<div class="button-container">
-						<button>Imprimer</button>
-						<button>Annuler</button>
+						<button id="validate-ticket">Imprimer</button>
+						<button id="cancel">Annuler</button>
 					</div>
 				</div>
 			</div>
