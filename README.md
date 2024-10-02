@@ -156,3 +156,11 @@ echo "./blue.sh" | cat .bashrc
 
 https://www.howtogeek.com/169679/how-to-add-a-printer-to-your-raspberry-pi-or-other-linux-computer/
 https://www.raspberry-pi-geek.com/Archive/2016/20/Print-with-shell-commands-courtesy-of-CUPS
+
+# JS Port
+
+## Dependencies
+
+```
+npm install blessed blessed-contrib fs
+```

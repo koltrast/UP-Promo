@@ -3,109 +3,115 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Union Pragmatique Promo</title>
 		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/UPPromoLogo.css" />
+		<title>Union Pragmatique Promo</title>
 	</head>
 	<body>
 		<div class="container">
-			<div id="schema">
-				<img src="./img/schema.svg" alt="Schéma UP CCC" />
-			</div>
-
-			<h1>Instructions</h1>
-
-			<div id="step0">
-				<h2>
-					<span class="number-round">1.</span> Scannez le code ci-dessous pour
-					commencer.
-				</h2>
-				<div class="barcode">
-					<img src="./img/ANNULER.svg" alt="Annuler" class="barcode-img" />
+			<div id="header">
+				<div id="header-left">
+					<div id="logo-box">
+						<h1 id="logo">Union<br />Pragmatique</h1>
+						<h1 id="promo">Promo</h1>
+					</div>
+				</div>
+				<div id="item-input">
+					<input
+						id="user-input"
+						type="text"
+						placeholder="Scannez vos articles"
+					/>
+					<button id="validate-item">Valider</button>
 				</div>
 			</div>
-
-			<div id="step1">
-				<h2><span class="number-round">2.</span> Scannez vos articles.</h2>
-			</div>
-
-			<div id="step2">
-				<h2>
-					<span class="number-round">3.</span> Sélectionnez votre tranche de
-					revenus pour découvrir le prix de vos articles. <br />(revenus annuel
-					net)
-				</h2>
-				<ul id="decile-selection">
-					<li value="0">
-						<span class="item-text">&lt; à 9570 €</span>
-						<span class="dots"></span>
-						<img src="./img/0.svg" alt="0" class="barcode-img" />
-					</li>
-					<li value="1">
-						<span class="item-text">Entre 9570 € et 14740 €</span>
-						<span class="dots"></span>
-						<img src="./img/1.svg" alt="1" class="barcode-img" />
-					</li>
-					<li value="2">
-						<span class="item-text">Entre 14740 € et 17850 €</span>
-						<span class="dots"></span>
-						<img src="./img/2.svg" alt="2" class="barcode-img" />
-					</li>
-					<li value="3">
-						<span class="item-text">Entre 17850 € et 20560 €</span>
-						<span class="dots"></span>
-						<img src="./img/3.svg" alt="3" class="barcode-img" />
-					</li>
-					<li value="4">
-						<span class="item-text">Entre 20560 € et 23040 €</span>
-						<span class="dots"></span>
-						<img src="./img/4.svg" alt="4" class="barcode-img" />
-					</li>
-					<li value="5">
-						<span class="item-text">Entre 23040 € et 25720 €</span>
-						<span class="dots"></span>
-						<img src="./img/5.svg" alt="5" class="barcode-img" />
-					</li>
-					<li value="6">
-						<span class="item-text">Entre 25720 € et 28770 €</span>
-						<span class="dots"></span>
-						<img src="./img/6.svg" alt="6" class="barcode-img" />
-					</li>
-					<li value="7">
-						<span class="item-text">Entre 28770 € et 32730 €</span>
-						<span class="dots"></span>
-						<img src="./img/7.svg" alt="7" class="barcode-img" />
-					</li>
-					<li value="8">
-						<span class="item-text">Entre 32730 € et 38930 €</span>
-						<span class="dots"></span>
-						<img src="./img/8.svg" alt="8" class="barcode-img" />
-					</li>
-					<li value="9">
-						<span class="item-text">&gt; 38930 €</span>
-						<span class="dots"></span>
-						<img src="./img/9.svg" alt="9" class="barcode-img" />
-					</li>
-				</ul>
-			</div>
-
-			<div id="step3">
-				<h2>
-					<span class="number-round">3.</span> Veuillez prendre votre ticket de
-					prévisualisation.
-				</h2>
-			</div>
-
-			<div id="step4">
-				<h2><span class="number-round">4.</span> Validez vos achats.</h2>
-				<div class="barcode">
-					<img src="./img/VALIDER.svg" alt="Valider" class="barcode-img" />
-					<h3>Valider</h3>
+			<div id="middle">
+				<div id="step1">
+					<img src="./img/schema.svg" alt="schema" />
+					<div id="message-step1">
+						<p>1. Pour commencer, scannez vos articles.</p>
+					</div>
 				</div>
-				<div class="barcode">
-					<img src="./img/ANNULER.svg" alt="Annuler" class="barcode-img" />
-					<h3>Annuler</h3>
+
+				<div id="step2" style="display: none">
+					<div class="step2-4-main">
+						<div class="items">
+							<div id="step2-1"><h3>Vos achats :</h3></div>
+							<div id="step2-2">
+								<ul id="entered-items-list"></ul>
+							</div>
+						</div>
+					</div>
+					<div class="button-container">
+						<button id="validate-list">Suivant</button>
+					</div>
+					<div id="message-step2">
+						<p>2. Article(s) ajouté(s). Cliquez sur suivant.</p>
+					</div>
+				</div>
+
+				<div id="step3" style="display: none">
+					<div id="selection-list-section">
+						<div class="decile-option" data-value="0">inférieurs à 9570 €</div>
+						<div class="decile-option" data-value="1">
+							entre 9570 € et 14740 €
+						</div>
+						<div class="decile-option" data-value="2">
+							entre 14740 € et 17850 €
+						</div>
+						<div class="decile-option" data-value="3">
+							entre 17850 € et 20560 €
+						</div>
+						<div class="decile-option" data-value="4">
+							entre 20560 € et 23040 €
+						</div>
+						<div class="decile-option" data-value="5">
+							entre 23040 € et 25720 €
+						</div>
+						<div class="decile-option" data-value="6">
+							entre 25720 € et 28770 €
+						</div>
+						<div class="decile-option" data-value="7">
+							entre 28770 € et 32730 €
+						</div>
+						<div class="decile-option" data-value="8">
+							entre 32730 € et 38930 €
+						</div>
+						<div class="decile-option" data-value="9">supérieurs à 38930 €</div>
+					</div>
+					<div class="button-container">
+						<button id="validate-decile">Suivant</button>
+					</div>
+					<div id="message-step3">
+						<p>3. Indiquez votre tranche de revenus annuels nets.</p>
+					</div>
+				</div>
+				<div id="step4" style="display: none">
+					<div class="items">
+						<div><pre id="preview"></pre></div>
+						<div id="message-step4">
+							<p>4. Validez la commande.</p>
+							<p>
+								Une fois la commande validée, la machine va imprimer deux
+								tickets.
+							</p>
+							<p>Conservez le premier.</p>
+							<p>
+								Glissez le second ticket ainsi que la somme correspondante dans
+								une enveloppe, puis déposez cette dernière dans l’urne.
+							</p>
+							<p>L’urne ne rend pas la monnaie.</p>
+						</div>
+					</div>
+
+					<div class="button-container">
+						<button id="validate-ticket">Imprimer</button>
+						<button id="cancel">Annuler</button>
+					</div>
 				</div>
 			</div>
+			<!-- <div id="footer"><p>center</p></div> -->
 		</div>
+		<script src="js/main.js"></script>
 	</body>
 </html>
